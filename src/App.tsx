@@ -17,6 +17,7 @@ function App() {
                 badges={ ['Node.js', 'React'] }
                 demoUrl='demo'
                 sourceUrl='source'
+                previewFile='preview.jpg'
             />
         </>
     )
