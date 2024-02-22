@@ -19,7 +19,7 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                             <div className="my-2">
                                 {
                                     badges.map((text) => (
-                                        <span className="badge text-bg-secondary me-1">{text}</span>
+                                        <span key={text} className="badge text-bg-secondary me-1">{text}</span>
                                     ))
                                 }
                             </div>
