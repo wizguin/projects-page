@@ -2,9 +2,11 @@ interface Props {
     title: string,
     description: string,
     badges?: string[],
+    demoUrl?: string,
+    sourceUrl?: string
 }
 
-export default function ProjectCard({ title, description, badges = [] }: Props) {
+export default function ProjectCard({ title, description, badges = [], demoUrl, sourceUrl }: Props) {
     return (
         <section className="container px-4 pb-4">
             <div className="card">
@@ -25,6 +27,10 @@ export default function ProjectCard({ title, description, badges = [] }: Props) 
                             <p className="card-text">
                                 {description}
                             </p>
+
+                            { demoUrl && <a className="btn btn-primary me-1" href={demoUrl} role="button">Demo</a> }
+                            { sourceUrl && <a className="btn btn-secondary me-1" href={sourceUrl} role="button">Source Code</a> }
+
                         </div>
                     </div>
 
