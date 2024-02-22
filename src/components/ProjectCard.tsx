@@ -3,10 +3,13 @@ interface Props {
     description: string,
     badges?: string[],
     demoUrl?: string,
-    sourceUrl?: string
+    sourceUrl?: string,
+    previewFile?: string
 }
 
-export default function ProjectCard({ title, description, badges = [], demoUrl, sourceUrl }: Props) {
+const previewDir = 'assets/previews/'
+
+export default function ProjectCard({ title, description, badges = [], demoUrl, sourceUrl, previewFile }: Props) {
     return (
         <section className="container px-4 pb-4">
             <div className="card">
@@ -32,6 +35,10 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                             { sourceUrl && <a className="btn btn-secondary me-1" href={sourceUrl} role="button">Source Code</a> }
 
                         </div>
+                    </div>
+
+                    <div className="d-none d-md-block col-md">
+                        <img src={`${previewDir}${previewFile}`} className="img-fluid h-100 object-fit-scale rounded p-1" />
                     </div>
 
                 </div>
