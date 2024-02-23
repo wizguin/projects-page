@@ -6,3 +6,7 @@
     background: linear-gradient(to left, #7474bf, #348ac7);
     text-shadow: 1px 1px 4px rgba(34,34,34,0.5);
 }
+
+.preview-content {
+    aspect-ratio: 16 / 10;
+}

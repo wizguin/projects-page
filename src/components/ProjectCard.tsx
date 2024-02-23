@@ -37,8 +37,8 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                         </div>
                     </div>
 
-                    <div className="d-none d-md-block col-md">
-                        <img src={`${previewDir}${previewFile}`} className="img-fluid h-100 object-fit-scale rounded p-1" />
+                    <div className="d-none d-md-block col-md align-self-center">
+                        <img src={`${previewDir}${previewFile}`} className="preview-content img-fluid object-fit-cover rounded p-1" />
                     </div>
 
                 </div>
