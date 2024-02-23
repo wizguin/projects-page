@@ -34,13 +34,13 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                                 {description}
                             </p>
 
-                            { demoUrl && <a className="btn btn-primary me-1" href={demoUrl} role="button">Demo</a> }
-                            { sourceUrl && <a className="btn btn-secondary me-1" href={sourceUrl} role="button">Source Code</a> }
+                            { demoUrl && <a className="btn btn-primary me-2" href={demoUrl} role="button">Demo</a> }
+                            { sourceUrl && <a className="btn btn-secondary" href={sourceUrl} role="button">Source Code</a> }
 
                         </div>
                     </div>
 
-                    <div className="d-none d-md-block col-md align-self-center">
+                    <div className="d-none d-md-block col-md align-self-center p-2">
                         { getPreview(previewType, previewFile) }
                     </div>
 
@@ -52,7 +52,7 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
 
 function getPreview(previewType: PreviewTypes, previewFile: string) {
     const src = `${previewDir}${previewFile}`
-    const className = "preview-content img-fluid object-fit-cover rounded p-1"
+    const className = "preview-content img-fluid object-fit-cover rounded"
 
     switch (previewType) {
         case PreviewTypes.Image:

@@ -1,5 +1,11 @@
 :root {
     --bs-body-font-family: "Montserrat", sans-serif !important;
+    --bs-border-radius: 1rem !important;
+}
+
+.card {
+    --bs-card-bg: var(--bs-dark-bg-subtle) !important;
+    --bs-card-border-width: 0px !important;
 }
 
 .banner {
@@ -12,5 +18,6 @@
 }
 
 .preview-content {
+    display: block;
     aspect-ratio: 16 / 10;
 }
