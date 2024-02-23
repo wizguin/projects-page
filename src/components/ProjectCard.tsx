@@ -1,15 +1,18 @@
+import PreviewTypes from './types/PreviewTypes'
+
 interface Props {
     title: string,
     description: string,
     badges?: string[],
     demoUrl?: string,
     sourceUrl?: string,
-    previewFile?: string
+    previewType?: PreviewTypes
+    previewFile: string
 }
 
 const previewDir = 'assets/previews/'
 
-export default function ProjectCard({ title, description, badges = [], demoUrl, sourceUrl, previewFile }: Props) {
+export default function ProjectCard({ title, description, badges = [], demoUrl, sourceUrl, previewType = PreviewTypes.Image, previewFile }: Props) {
     return (
         <section className="container px-4 pb-4">
             <div className="card">
@@ -38,11 +41,24 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                     </div>
 
                     <div className="d-none d-md-block col-md align-self-center">
-                        <img src={`${previewDir}${previewFile}`} className="preview-content img-fluid object-fit-cover rounded p-1" />
+                        { getPreview(previewType, previewFile) }
                     </div>
 
                 </div>
             </div>
         </section>
     )
+}
+
+function getPreview(previewType: PreviewTypes, previewFile: string) {
+    const src = `${previewDir}${previewFile}`
+    const className = "preview-content img-fluid object-fit-cover rounded p-1"
+
+    switch (previewType) {
+        case PreviewTypes.Image:
+            return <img src={src} className={className} />
+
+        case PreviewTypes.Video:
+            return <video controls className={className}><source src={src}></source></video>
+    }
 }

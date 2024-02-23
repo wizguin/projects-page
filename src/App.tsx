@@ -3,6 +3,8 @@ import './App.css'
 import Header from './components/Header'
 import ProjectCard from './components/ProjectCard'
 
+import PreviewTypes from './components/types/PreviewTypes'
+
 function App() {
     return (
         <>
