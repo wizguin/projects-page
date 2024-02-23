@@ -7,6 +7,10 @@
     text-shadow: 1px 1px 4px rgba(34,34,34,0.5);
 }
 
+.banner * {
+    color: #fff !important;
+}
+
 .preview-content {
     aspect-ratio: 16 / 10;
 }
