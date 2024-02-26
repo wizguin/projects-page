@@ -40,7 +40,7 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                         </div>
                     </div>
 
-                    <div className="d-none d-md-block col-md align-self-center p-2">
+                    <div className="d-none d-md-block col-md align-self-center p-2 position-relative">
                         { getPreview(previewType, previewFile) }
                     </div>
 
@@ -59,6 +59,12 @@ function getPreview(previewType: PreviewTypes, previewFile: string) {
             return <img src={src} className={className} />
 
         case PreviewTypes.Video:
-            return <video controls className={className}><source src={src}></source></video>
+            return (
+                <>
+                    <i className="play-button fa-solid fa-play position-absolute top-50 start-50 translate-middle"></i>
+
+                    <video className={className}><source src={src}></source></video>
+                </>
+            )
     }
 }
