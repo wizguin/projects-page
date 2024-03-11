@@ -6,15 +6,8 @@ import ProjectCard from './components/ProjectCard'
 
 
 function App() {
-    const projects = data.projects.map(project => (
-        <ProjectCard
-            title={project.title}
-            description={project.description}
-            badges={project.badges}
-            demoUrl={project.demoUrl}
-            sourceUrl={project.sourceUrl}
-            previewFile={project.previewFile}
-        />
+    const projects = data.projects.map((project, index) => (
+        <ProjectCard key={index} {...project} />
     ))
 
     return (
