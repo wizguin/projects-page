@@ -1,6 +1,6 @@
 import PreviewTypes from './types/PreviewTypes'
 
-interface Props {
+export interface Props {
     title: string,
     description: string,
     badges?: string[],
