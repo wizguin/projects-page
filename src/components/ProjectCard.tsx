@@ -1,3 +1,4 @@
+import ProjectPreview from './ProjectPreview'
 import PreviewTypes from './types/PreviewTypes'
 
 export interface Props {
@@ -6,13 +7,11 @@ export interface Props {
     badges?: string[],
     demoUrl?: string,
     sourceUrl?: string,
-    previewType?: PreviewTypes
+    previewType: PreviewTypes
     previewFile: string
 }
 
-const previewDir = 'assets/previews/'
-
-export default function ProjectCard({ title, description, badges, demoUrl, sourceUrl, previewType, previewFile}: Props) {
+export default function ProjectCard({ title, description, badges, demoUrl, sourceUrl, previewType, previewFile }: Props) {
     const badgeElements = badges && badges.map(text => (
         <span key={text} className="badge text-bg-secondary me-1">{text}</span>
     ))
@@ -35,31 +34,9 @@ export default function ProjectCard({ title, description, badges, demoUrl, sourc
                         </div>
                     </div>
 
-                    <div className="d-none d-md-block col-md align-self-center p-2 position-relative">
-                        {getPreview(previewType, previewFile)}
-                    </div>
-
+                    <ProjectPreview previewType={previewType} previewFile={previewFile} />
                 </div>
             </div>
         </section>
     )
-}
-
-function getPreview(previewType: PreviewTypes = PreviewTypes.Image, previewFile: string) {
-    const src = `${previewDir}${previewFile}`
-    const className = "preview-content img-fluid object-fit-cover rounded"
-
-    switch (previewType) {
-        case PreviewTypes.Image:
-            return <img src={src} className={className} />
-
-        case PreviewTypes.Video:
-            return (
-                <>
-                    <i className="play-button fa-solid fa-play position-absolute top-50 start-50 translate-middle"></i>
-
-                    <video className={className} role="button" onClick={() => console.log('test')}><source src={src}></source></video>
-                </>
-            )
-    }
 }
