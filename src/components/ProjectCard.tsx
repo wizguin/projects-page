@@ -12,7 +12,11 @@ export interface Props {
 
 const previewDir = 'assets/previews/'
 
-export default function ProjectCard({ title, description, badges = [], demoUrl, sourceUrl, previewType = PreviewTypes.Image, previewFile }: Props) {
+export default function ProjectCard({ title, description, badges, demoUrl, sourceUrl, previewType, previewFile}: Props) {
+    const badgeElements = badges && badges.map(text => (
+        <span key={text} className="badge text-bg-secondary me-1">{text}</span>
+    ))
+
     return (
         <section className="container px-4 pb-4">
             <div className="card">
@@ -22,26 +26,17 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
                         <div className="card-body m-4">
                             <h5 className="card-title">{title}</h5>
 
-                            <div className="my-2">
-                                {
-                                    badges.map((text) => (
-                                        <span key={text} className="badge text-bg-secondary me-1">{text}</span>
-                                    ))
-                                }
-                            </div>
+                            <div className="my-2">{badgeElements}</div>
 
-                            <p className="card-text">
-                                {description}
-                            </p>
+                            <p className="card-text">{description}</p>
 
-                            { demoUrl && <a className="btn btn-primary me-2" href={demoUrl} role="button">Demo</a> }
-                            { sourceUrl && <a className="btn btn-secondary" href={sourceUrl} role="button">Source Code</a> }
-
+                            {demoUrl && <a className="btn btn-primary me-2" href={demoUrl} role="button">Demo</a>}
+                            {sourceUrl && <a className="btn btn-secondary" href={sourceUrl} role="button">Source Code</a>}
                         </div>
                     </div>
 
                     <div className="d-none d-md-block col-md align-self-center p-2 position-relative">
-                        { getPreview(previewType, previewFile) }
+                        {getPreview(previewType, previewFile)}
                     </div>
 
                 </div>
@@ -50,7 +45,7 @@ export default function ProjectCard({ title, description, badges = [], demoUrl, 
     )
 }
 
-function getPreview(previewType: PreviewTypes, previewFile: string) {
+function getPreview(previewType: PreviewTypes = PreviewTypes.Image, previewFile: string) {
     const src = `${previewDir}${previewFile}`
     const className = "preview-content img-fluid object-fit-cover rounded"
 
@@ -63,7 +58,7 @@ function getPreview(previewType: PreviewTypes, previewFile: string) {
                 <>
                     <i className="play-button fa-solid fa-play position-absolute top-50 start-50 translate-middle"></i>
 
-                    <video className={className}><source src={src}></source></video>
+                    <video className={className} role="button" onClick={() => console.log('test')}><source src={src}></source></video>
                 </>
             )
     }
