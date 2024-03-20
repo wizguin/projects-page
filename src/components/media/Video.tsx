@@ -28,7 +28,7 @@ export default function Video({ src, className }: Props) {
         <>
             <i className={`play-button fa-solid position-absolute top-50 start-50 translate-middle ${playbackIcon}`}></i>
 
-            <video ref={ref} className={className} role='button' onClick={togglePlayback}>
+            <video ref={ref} className={className} role='button' onClick={togglePlayback} loop muted>
                 <source src={src} />
             </video>
         </>
