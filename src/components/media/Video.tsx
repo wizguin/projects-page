@@ -7,10 +7,12 @@ interface Props {
 
 export default function Video({ src, className }: Props) {
     const [isPlaying, setIsPlaying] = useState(false)
+    const [isMouseOver, setIsMouseOver] = useState(false)
 
     const ref: MutableRefObject<HTMLVideoElement | null> = useRef(null)
 
-    const playbackIcon = isPlaying ? 'fa-pause' : 'fa-play'
+    const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
+    const hidePlayButton = isPlaying && !isMouseOver ? 'hidden' : ''
 
     useEffect(() => {
         if (isPlaying) {
@@ -25,15 +27,27 @@ export default function Video({ src, className }: Props) {
         setIsPlaying(prev => !prev)
     }
 
+    function onMouseEnter() {
+        setIsMouseOver(true)
+    }
+
+    function onMouseLeave() {
+        setIsMouseOver(false)
+    }
+
     return (
         <>
-            <i className={`play-button fa-solid position-absolute top-50 start-50 translate-middle ${playbackIcon}`}></i>
+            <i
+                className={`play-button fa-solid position-absolute top-50 start-50 translate-middle ${playIcon} ${hidePlayButton}`}
+            ></i>
 
             <video
                 ref={ref}
                 className={className}
                 role='button'
                 onClick={togglePlayback}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 loop
