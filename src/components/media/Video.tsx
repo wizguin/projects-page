@@ -1,3 +1,5 @@
+import './Video.css'
+
 import { useState, useEffect, useRef, MutableRefObject, SyntheticEvent } from 'react'
 
 interface Props {
@@ -38,7 +40,7 @@ export default function Video({ src, className }: Props) {
     return (
         <>
             <i
-                className={`play-button fa-solid position-absolute top-50 start-50 translate-middle ${playIcon} ${hidePlayButton}`}
+                className={`play-button fa-solid ${playIcon} ${hidePlayButton}`}
             ></i>
 
             <video

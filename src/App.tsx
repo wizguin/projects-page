@@ -4,7 +4,6 @@ import data from './data'
 import Header from './components/Header'
 import ProjectCard from './components/ProjectCard'
 
-
 function App() {
     const projects = data.projects.map((project, index) => (
         <ProjectCard key={index} {...project} />
@@ -13,7 +12,10 @@ function App() {
     return (
         <>
             <Header headerTitle={data.headerTitle} />
-            {projects}
+
+            <section className='cards'>
+                {projects}
+            </section>
         </>
     )
 }

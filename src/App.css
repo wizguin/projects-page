@@ -1,34 +1,102 @@
 :root {
-    --bs-body-font-family: "Montserrat", sans-serif !important;
-    --bs-border-radius: 1rem !important;
+    color-scheme: dark;
+    --font-color: #fff;
+    --font-secondary-color: #dee2e6;
+    --background-color: #212529;
+    --btn-color: #007af1;
+    --btn-hover-color: #0063c7;
+    --btn-secondary-color: #6a757c;
+    --btn-secondary-hover-color: #576066;
+    --gradient-start-color: #1e2125;
+    --gradient-end-color: #23282c;
+    --shadow-start-color: #191c1fee;
+    --shadow-end-color: #292e33ee;
 }
 
-.card {
-    --bs-card-bg: var(--bs-dark-bg-subtle) !important;
-    --bs-card-border-width: 0px !important;
+* {
+    box-sizing: border-box;
 }
 
-.banner {
-    background: linear-gradient(to left, #7474bf, #348ac7);
-    text-shadow: 1px 1px 4px rgba(34,34,34,0.5);
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif !important;
+    color: var(--font-secondary-color);
+    background-color: var(--background-color);
 }
 
-.banner * {
-    color: #fff !important;
+h1 {
+    font-size: calc(1.375rem + 1.5vw);
 }
 
-.preview-content {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16 / 10;
+h2 {
+    font-size: calc(1.275rem + .3vw);
 }
 
-.play-button {
-    font-size: 60px;
-    text-shadow: 1px 1px 20px rgba(30,30,30,1);
-    transition: opacity 0.2s;
+h3 {
+    font-size: 1.25rem;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+}
+
+[role=button] {
+    cursor: pointer;
+}
+
+.button {
+    padding: 0.6rem 0.9rem;
+    border-radius: 1rem;
+    background-color: var(--btn-color);
+    color: var(--font-color);
+    transition: background 0.2s ease !important;
+    white-space: nowrap;
+}
+
+.button-secondary {
+    background-color: var(--btn-secondary-color);
+}
+
+.button:hover {
+    background-color: var(--btn-hover-color);
+}
+
+.button-secondary:hover {
+    background-color: var(--btn-secondary-hover-color);
 }
 
 .hidden {
     opacity: 0;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
 }

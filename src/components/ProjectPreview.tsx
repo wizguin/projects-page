@@ -1,3 +1,5 @@
+import './ProjectPreview.css'
+
 import Image from './media/Image'
 import Video from './media/Video'
 import PreviewTypes from './types/PreviewTypes'
@@ -9,7 +11,7 @@ export interface Props {
 
 export default function ProjectPreview({ previewType, previewFile }: Props) {
     const src = `assets/previews/${previewFile}`
-    const className = 'preview-content img-fluid object-fit-cover rounded'
+    const className = 'preview-content'
 
     let preview
 
@@ -24,7 +26,7 @@ export default function ProjectPreview({ previewType, previewFile }: Props) {
     }
 
     return (
-        <div className='d-none d-md-block col-md align-self-center p-2 position-relative'>
+        <div className='card-preview'>
             {preview}
         </div>
     )

@@ -1,3 +1,5 @@
+import './Header.css'
+
 interface Props {
     headerTitle: string,
     projectsTitle?: string,
@@ -7,19 +9,19 @@ interface Props {
 export default function Header({ headerTitle, projectsTitle = 'Projects', githubUrl = 'github' }: Props) {
     return (
         <>
-            <header className='banner p-4 text-center'>
-                <div className='container py-4'>
-                    <h1 className='pb-4'>{headerTitle}</h1>
+            <header>
+                <div className='header-title'>
+                    <h1>{headerTitle}</h1>
 
-                    <a className='btn' href={githubUrl}>
-                        <i className='fa-brands fa-github h1 mb-0'></i>
+                    <a href={githubUrl}>
+                        <i className='fa-brands fa-github'></i>
                     </a>
                 </div>
+
+                <h2>{projectsTitle}</h2>
             </header>
 
-            <section className='container p-4 text-center'>
-                <h4 className='mb-0'>{projectsTitle}</h4>
-            </section>
+            <div className='header-gradient'></div>
         </>
     )
 }

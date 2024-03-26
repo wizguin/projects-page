@@ -1,3 +1,5 @@
+import './ProjectCard.css'
+
 import ProjectPreview from './ProjectPreview'
 import PreviewTypes from './types/PreviewTypes'
 
@@ -13,30 +15,27 @@ export interface Props {
 
 export default function ProjectCard({ title, description, badges, demoUrl, sourceUrl, previewType, previewFile }: Props) {
     const badgeElements = badges && badges.map(text => (
-        <span key={text} className='badge text-bg-secondary me-1'>{text}</span>
+        <span key={text} className='badge'>{text}</span>
     ))
 
     return (
-        <section className='container px-4 pb-4'>
-            <div className='card'>
-                <div className='row g-0'>
+        <div className='card'>
 
-                    <div className='col-md-8'>
-                        <div className='card-body m-4'>
-                            <h5 className='card-title'>{title}</h5>
+            <div className='card-body'>
+                <h3 className='card-title'>{title}</h3>
 
-                            <div className='my-2'>{badgeElements}</div>
+                <div className='card-badges'>{badgeElements}</div>
 
-                            <p className='card-text'>{description}</p>
+                <p className='card-text'>{description}</p>
 
-                            {demoUrl && <a className='btn btn-primary me-2' href={demoUrl} role='button'>Demo</a>}
-                            {sourceUrl && <a className='btn btn-secondary' href={sourceUrl} role='button'>Source Code</a>}
-                        </div>
-                    </div>
-
-                    <ProjectPreview previewType={previewType} previewFile={previewFile} />
+                <div className='card-buttons'>
+                    {demoUrl && <a className='button' href={demoUrl} role='button'>Demo</a>}
+                    {sourceUrl && <a className='button button-secondary' href={sourceUrl} role='button'>Source Code</a>}
                 </div>
             </div>
-        </section>
+
+            <ProjectPreview previewType={previewType} previewFile={previewFile} />
+
+        </div>
     )
 }
