@@ -4,10 +4,9 @@ import { useState, useEffect, useRef, MutableRefObject, SyntheticEvent } from 'r
 
 interface Props {
     src: string
-    className: string
 }
 
-export default function Video({ src, className }: Props) {
+export default function Video({ src }: Props) {
     const [isPlaying, setIsPlaying] = useState(false)
     const [isMouseOver, setIsMouseOver] = useState(false)
 
@@ -45,7 +44,6 @@ export default function Video({ src, className }: Props) {
 
             <video
                 ref={ref}
-                className={className}
                 role='button'
                 onClick={togglePlayback}
                 onMouseEnter={onMouseEnter}

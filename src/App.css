@@ -1,7 +1,7 @@
 :root {
     color-scheme: dark;
-    --font-color: #fff;
-    --font-secondary-color: #dee2e6;
+    --font-color: #dee2e6;
+    --font-secondary-color: #fff;
     --background-color: #212529;
     --btn-color: #007af1;
     --btn-hover-color: #0063c7;
@@ -20,7 +20,7 @@
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif !important;
-    color: var(--font-secondary-color);
+    color: var(--font-color);
     background-color: var(--background-color);
 }
 
@@ -43,7 +43,7 @@ h1, h2, h3 {
 
 a {
     text-decoration: none;
-    color: var(--font-color);
+    color: var(--font-secondary-color);
 }
 
 button {
@@ -62,7 +62,7 @@ button {
     padding: 0.6rem 0.9rem;
     border-radius: 1rem;
     background-color: var(--btn-color);
-    color: var(--font-color);
+    color: var(--font-secondary-color);
     transition: background 0.2s ease !important;
     white-space: nowrap;
 }

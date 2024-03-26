@@ -26,7 +26,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     background-color: var(--btn-secondary-color);
-    color: var(--font-color);
+    color: var(--font-secondary-color);
 }
 
 .card p {

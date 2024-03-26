@@ -11,17 +11,16 @@ export interface Props {
 
 export default function ProjectPreview({ previewType, previewFile }: Props) {
     const src = `assets/previews/${previewFile}`
-    const className = 'preview-content'
 
     let preview
 
     switch (previewType) {
         case PreviewTypes.Image:
-            preview = <Image src={src} className={className} />
+            preview = <Image src={src} />
             break
 
         case PreviewTypes.Video:
-            preview = <Video src={src} className={className} />
+            preview = <Video src={src} />
             break
     }
 

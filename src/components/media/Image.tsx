@@ -1,8 +1,7 @@
 interface Props {
     src: string
-    className: string
 }
 
-export default function Image({ src, className }: Props) {
-    return <img src={src} className={className} />
+export default function Image({ src }: Props) {
+    return <img src={src} />
 }
