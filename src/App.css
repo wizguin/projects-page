@@ -9,8 +9,8 @@
     --btn-secondary-hover-color: #576066;
     --gradient-start-color: #1e2125;
     --gradient-end-color: #23282c;
-    --shadow-start-color: #191c1fee;
-    --shadow-end-color: #292e33ee;
+    --shadow-start-color: #292e33ee;
+    --shadow-end-color: #191c1fee;
 }
 
 * {
