@@ -25,7 +25,22 @@ export default function ProjectPreview({ previewType, previewFile }: Props) {
     }
 
     return (
-        <div className='card-preview'>
+        <div className='card-preview' role='button'>
+
+            <div className='button-group'>
+                <a className='button button-secondary' role='button'>
+                    <i className='fa-solid fa-chevron-left'></i>
+                </a>
+
+                <a className='button button-secondary' role='button'>
+                    <i className='fa-solid fa-expand'></i>
+                </a>
+
+                <a className='button button-secondary' role='button'>
+                    <i className='fa-solid fa-chevron-right'></i>
+                </a>
+            </div>
+
             {preview}
         </div>
     )
