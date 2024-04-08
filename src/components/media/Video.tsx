@@ -3,12 +3,12 @@ import './Video.css'
 import { useState, useEffect, useRef, MutableRefObject, SyntheticEvent } from 'react'
 
 interface Props {
-    src: string
+    src: string,
+    isMouseOver: boolean
 }
 
-export default function Video({ src }: Props) {
+export default function Video({ src, isMouseOver }: Props) {
     const [isPlaying, setIsPlaying] = useState(false)
-    const [isMouseOver, setIsMouseOver] = useState(false)
 
     const ref: MutableRefObject<HTMLVideoElement | null> = useRef(null)
 
@@ -28,14 +28,6 @@ export default function Video({ src }: Props) {
         setIsPlaying(prev => !prev)
     }
 
-    function onMouseEnter() {
-        setIsMouseOver(true)
-    }
-
-    function onMouseLeave() {
-        setIsMouseOver(false)
-    }
-
     return (
         <>
             <i
@@ -46,8 +38,6 @@ export default function Video({ src }: Props) {
                 ref={ref}
                 role='button'
                 onClick={togglePlayback}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 loop

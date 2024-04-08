@@ -25,7 +25,7 @@ export default function ProjectPreview({ previewType, previewFile }: Props) {
             break
 
         case PreviewTypes.Video:
-            preview = <Video src={src} />
+            preview = <Video src={src} isMouseOver={isMouseOver} />
             break
     }
 
