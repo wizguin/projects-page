@@ -33,6 +33,10 @@
     border-radius: 1rem;
     object-fit: cover;
     aspect-ratio: 16 / 10;
-    animation: fadeIn 0.2s;
+}
+
+.card-preview img,
+.card-preview .video {
+    animation: fadeIn 0.4s;
 }
 
