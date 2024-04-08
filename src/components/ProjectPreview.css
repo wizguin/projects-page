@@ -33,4 +33,6 @@
     border-radius: 1rem;
     object-fit: cover;
     aspect-ratio: 16 / 10;
+    animation: fadeIn 0.2s;
 }
+

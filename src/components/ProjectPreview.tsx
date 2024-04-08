@@ -17,6 +17,11 @@ export default function ProjectPreview({ media }: Props) {
     const controlsVisible = !isMouseOver ? 'hidden' : ''
 
     const fileName = media[mediaIndex]
+
+    if (!fileName) {
+        return
+    }
+
     const type = getType(fileName)
     const src = `assets/previews/${fileName}`
 
@@ -40,6 +45,14 @@ export default function ProjectPreview({ media }: Props) {
         setIsMouseOver(false)
     }
 
+    function nextMedia() {
+        setMediaIndex(prev => (prev + 1) % media.length)
+    }
+
+    function prevMedia() {
+        setMediaIndex(prev => (prev - 1 + media.length) % media.length)
+    }
+
     return (
         <div className='card-preview'
             role='button'
@@ -48,7 +61,7 @@ export default function ProjectPreview({ media }: Props) {
         >
 
             <div className={`button-group fade ${controlsVisible}`}>
-                <a className='button button-secondary' role='button'>
+                <a className='button button-secondary' role='button' onClick={prevMedia}>
                     <i className='fa-solid fa-chevron-left'></i>
                 </a>
 
@@ -56,7 +69,7 @@ export default function ProjectPreview({ media }: Props) {
                     <i className='fa-solid fa-expand'></i>
                 </a>
 
-                <a className='button button-secondary' role='button'>
+                <a className='button button-secondary' role='button' onClick={nextMedia}>
                     <i className='fa-solid fa-chevron-right'></i>
                 </a>
             </div>
