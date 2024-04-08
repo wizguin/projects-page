@@ -15,6 +15,7 @@ export default function ProjectPreview({ media }: Props) {
     const [mediaIndex, setMediaIndex] = useState(0)
 
     const controlsVisible = !isMouseOver ? 'hidden' : ''
+    const navigationVisible = media.length > 1
 
     const fileName = media[mediaIndex]
 
@@ -53,6 +54,18 @@ export default function ProjectPreview({ media }: Props) {
         setMediaIndex(prev => (prev - 1 + media.length) % media.length)
     }
 
+    function openGallery() {
+
+    }
+
+    function controlButton(onClick: () => void, icon: string) {
+        return (
+            <a className='button button-secondary' role='button' onClick={onClick}>
+                <i className={`fa-solid ${icon}`}></i>
+            </a>
+        )
+    }
+
     return (
         <div className='card-preview'
             role='button'
@@ -61,17 +74,11 @@ export default function ProjectPreview({ media }: Props) {
         >
 
             <div className={`button-group fade ${controlsVisible}`}>
-                <a className='button button-secondary' role='button' onClick={prevMedia}>
-                    <i className='fa-solid fa-chevron-left'></i>
-                </a>
+                {navigationVisible && controlButton(prevMedia, 'fa-chevron-left')}
 
-                <a className='button button-secondary' role='button'>
-                    <i className='fa-solid fa-expand'></i>
-                </a>
+                {controlButton(openGallery, 'fa-expand')}
 
-                <a className='button button-secondary' role='button' onClick={nextMedia}>
-                    <i className='fa-solid fa-chevron-right'></i>
-                </a>
+                {navigationVisible && controlButton(nextMedia, 'fa-chevron-right')}
             </div>
 
             {preview}

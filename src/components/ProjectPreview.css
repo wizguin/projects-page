@@ -26,6 +26,10 @@
     border-radius: 0 1rem 1rem 0;
 }
 
+.card-preview .button-group .button:only-child {
+    border-radius: 1rem;
+}
+
 .card-preview img,
 .card-preview video {
     width: 100%;
