@@ -4,12 +4,17 @@ import Image from './media/Image'
 import Video from './media/Video'
 import PreviewTypes from './types/PreviewTypes'
 
+import { useState } from 'react'
+
 export interface Props {
     previewType: PreviewTypes
     previewFile: string
 }
 
 export default function ProjectPreview({ previewType, previewFile }: Props) {
+    const [isMouseOver, setIsMouseOver] = useState(false)
+
+    const controlsVisible = !isMouseOver ? 'hidden' : ''
     const src = `assets/previews/${previewFile}`
 
     let preview
@@ -24,10 +29,22 @@ export default function ProjectPreview({ previewType, previewFile }: Props) {
             break
     }
 
-    return (
-        <div className='card-preview' role='button'>
+    function onMouseEnter() {
+        setIsMouseOver(true)
+    }
 
-            <div className='button-group'>
+    function onMouseLeave() {
+        setIsMouseOver(false)
+    }
+
+    return (
+        <div className='card-preview'
+            role='button'
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
+
+            <div className={`button-group fade ${controlsVisible}`}>
                 <a className='button button-secondary' role='button'>
                     <i className='fa-solid fa-chevron-left'></i>
                 </a>
