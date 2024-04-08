@@ -2,24 +2,27 @@ import './ProjectPreview.css'
 
 import Image from './media/Image'
 import Video from './media/Video'
-import PreviewTypes from './types/PreviewTypes'
+import { PreviewTypes, getType } from './types/PreviewTypes'
 
 import { useState } from 'react'
 
 export interface Props {
-    previewType: PreviewTypes
-    previewFile: string
+    media: string[]
 }
 
-export default function ProjectPreview({ previewType, previewFile }: Props) {
+export default function ProjectPreview({ media }: Props) {
     const [isMouseOver, setIsMouseOver] = useState(false)
+    const [mediaIndex, setMediaIndex] = useState(0)
 
     const controlsVisible = !isMouseOver ? 'hidden' : ''
-    const src = `assets/previews/${previewFile}`
+
+    const fileName = media[mediaIndex]
+    const type = getType(fileName)
+    const src = `assets/previews/${fileName}`
 
     let preview
 
-    switch (previewType) {
+    switch (type) {
         case PreviewTypes.Image:
             preview = <Image src={src} />
             break
