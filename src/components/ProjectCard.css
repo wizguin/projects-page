@@ -4,8 +4,8 @@
     max-width: 1320px;
     border-radius: 1rem;
     background: linear-gradient(145deg, var(--gradient-start-color), var(--gradient-end-color));
-    box-shadow: -39px -39px 78px var(--shadow-start-color),
-        39px 39px 78px var(--shadow-end-color);
+    box-shadow: -35px -35px 75px var(--shadow-start-color),
+        35px 35px 75px var(--shadow-end-color);
 }
 
 .card-body {
@@ -43,20 +43,10 @@
     .card {
         grid-template-columns: 1fr 1fr;
     }
-
-    .card-preview {
-        margin: auto;
-    }
 }
 
 @media (min-width: 900px) {
     .card {
         grid-template-columns: 66% 1fr;
-    }
-}
-
-@media (min-width: 1200px) {
-    .card-preview {
-        margin: initial;
     }
 }

@@ -1,21 +1,20 @@
 import './ProjectPreview.css'
 
+import MiniControls from './controls/MiniControls'
 import Image from './media/Image'
 import Video from './media/Video'
 import { PreviewTypes, getType } from './types/PreviewTypes'
 
 import { useState } from 'react'
 
-export interface Props {
+interface Props {
     media: string[]
 }
 
 export default function ProjectPreview({ media }: Props) {
     const [isMouseOver, setIsMouseOver] = useState(false)
+    const [isExpanded, setExpanded] = useState(false)
     const [mediaIndex, setMediaIndex] = useState(0)
-
-    const controlsVisible = !isMouseOver ? 'hidden' : ''
-    const navigationVisible = media.length > 1
 
     const fileName = media[mediaIndex]
 
@@ -38,6 +37,14 @@ export default function ProjectPreview({ media }: Props) {
             break
     }
 
+    const miniControls = <MiniControls
+        media={media}
+        isMouseOver={isMouseOver}
+        setMediaIndex={setMediaIndex}
+        setExpanded={setExpanded}
+    />
+
+
     function onMouseEnter() {
         setIsMouseOver(true)
     }
@@ -46,42 +53,16 @@ export default function ProjectPreview({ media }: Props) {
         setIsMouseOver(false)
     }
 
-    function nextMedia() {
-        setMediaIndex(prev => (prev + 1) % media.length)
-    }
-
-    function prevMedia() {
-        setMediaIndex(prev => (prev - 1 + media.length) % media.length)
-    }
-
-    function openGallery() {
-
-    }
-
-    function controlButton(onClick: () => void, icon: string) {
-        return (
-            <a className='button button-secondary' role='button' onClick={onClick}>
-                <i className={`fa-solid ${icon}`}></i>
-            </a>
-        )
-    }
-
     return (
         <div className='card-preview'
             role='button'
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-
-            <div className={`button-group fade ${controlsVisible}`}>
-                {navigationVisible && controlButton(prevMedia, 'fa-chevron-left')}
-
-                {controlButton(openGallery, 'fa-expand')}
-
-                {navigationVisible && controlButton(nextMedia, 'fa-chevron-right')}
+            <div className='card-preview-small'>
+                {preview}
+                {miniControls}
             </div>
-
-            {preview}
         </div>
     )
 }

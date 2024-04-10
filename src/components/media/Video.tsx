@@ -29,10 +29,8 @@ export default function Video({ src, isMouseOver }: Props) {
     }
 
     return (
-        <>
-            <i
-                className={`play-button fa-solid ${playIcon} ${hidePlayButton}`}
-            ></i>
+        <span className='video-container'>
+            <i className={`play-button fa-solid fade ${playIcon} ${hidePlayButton}`}></i>
 
             <video
                 ref={ref}
@@ -45,6 +43,6 @@ export default function Video({ src, isMouseOver }: Props) {
             >
                 <source src={src} />
             </video>
-        </>
+        </span>
     )
 }
