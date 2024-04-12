@@ -44,7 +44,6 @@ export default function ProjectPreview({ media }: Props) {
         setExpanded={setExpanded}
     />
 
-
     function onMouseEnter() {
         setIsMouseOver(true)
     }
@@ -53,16 +52,25 @@ export default function ProjectPreview({ media }: Props) {
         setIsMouseOver(false)
     }
 
+    function onClick() {
+        if (isExpanded) {
+            setExpanded(false)
+        }
+    }
+
     return (
-        <div className='card-preview'
-            role='button'
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-        >
-            <div className='card-preview-small'>
+        <div className='card-preview'>
+
+            <span
+                className={`card-media ${isExpanded ? 'expanded' : ''}`}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                onClick={onClick}
+            >
                 {preview}
                 {miniControls}
-            </div>
+            </span>
+
         </div>
     )
 }

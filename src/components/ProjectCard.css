@@ -1,6 +1,8 @@
 .card {
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr;
+    width: 100%;
     max-width: 1320px;
     border-radius: 1rem;
     background: linear-gradient(145deg, var(--gradient-start-color), var(--gradient-end-color));
@@ -32,6 +34,11 @@
 .card p {
     margin: 0;
     line-height: 1.5rem;
+}
+
+.card img,
+.card video {
+    border-radius: 1rem;
 }
 
 .card-buttons {

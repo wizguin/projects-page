@@ -25,6 +25,8 @@ export default function Video({ src, isMouseOver }: Props) {
 
     function togglePlayback(event: SyntheticEvent) {
         event.preventDefault()
+        event.stopPropagation()
+
         setIsPlaying(prev => !prev)
     }
 

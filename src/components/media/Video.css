@@ -6,4 +6,12 @@
     font-size: 60px;
     color: #fff;
     text-shadow: 1px 1px 20px rgba(30,30,30,1);
+    pointer-events: none;
+}
+
+.video-container video {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    margin: auto;
 }

@@ -1,6 +1,6 @@
 import './MiniControls.css'
 
-import { Dispatch, SetStateAction} from 'react'
+import { Dispatch, SetStateAction, SyntheticEvent } from 'react'
 
 interface Props {
     media: string[],
@@ -13,19 +13,25 @@ export default function MiniControls({ media, isMouseOver, setMediaIndex, setExp
     const controlsVisible = !isMouseOver ? 'hidden' : ''
     const navigationVisible = media.length > 1
 
-    function nextMedia() {
+    function nextMedia(event: SyntheticEvent) {
+        event.stopPropagation()
+
         setMediaIndex(prev => (prev + 1) % media.length)
     }
 
-    function prevMedia() {
+    function prevMedia(event: SyntheticEvent) {
+        event.stopPropagation()
+
         setMediaIndex(prev => (prev - 1 + media.length) % media.length)
     }
 
-    function toggleExpanded() {
+    function toggleExpanded(event: SyntheticEvent) {
+        event.stopPropagation()
+
         setExpanded(prev => !prev)
     }
 
-    function controlButton(onClick: () => void, icon: string) {
+    function controlButton(onClick: (event: SyntheticEvent) => void, icon: string) {
         return (
             <a className='button' role='button' onClick={onClick}>
                 <i className={`fa-solid ${icon}`}></i>
