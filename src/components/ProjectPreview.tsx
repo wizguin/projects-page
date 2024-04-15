@@ -40,7 +40,8 @@ export default function ProjectPreview({ media }: Props) {
 
     const miniControls = <MiniControls
         media={media}
-        isMouseOver={isMouseOver || isExpanded}
+        isVisible={isMouseOver || isExpanded}
+        isExpanded={isExpanded}
         setMediaIndex={setMediaIndex}
         setExpanded={setExpanded}
     />

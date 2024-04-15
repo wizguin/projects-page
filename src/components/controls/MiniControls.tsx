@@ -4,14 +4,16 @@ import { Dispatch, SetStateAction, SyntheticEvent } from 'react'
 
 interface Props {
     media: string[],
-    isMouseOver: boolean,
+    isVisible: boolean,
+    isExpanded: boolean,
     setMediaIndex: Dispatch<SetStateAction<number>>,
     setExpanded: Dispatch<SetStateAction<boolean>>
 }
 
-export default function MiniControls({ media, isMouseOver, setMediaIndex, setExpanded }: Props) {
-    const controlsVisible = !isMouseOver ? 'hidden' : ''
+export default function MiniControls({ media, isVisible, isExpanded, setMediaIndex, setExpanded }: Props) {
+    const controlsVisible = isVisible ? '' : 'hidden'
     const navigationVisible = media.length > 1
+    const expandIcon = isExpanded ? 'fa-compress' : 'fa-expand'
 
     function nextMedia(event: SyntheticEvent) {
         event.stopPropagation()
@@ -43,7 +45,7 @@ export default function MiniControls({ media, isMouseOver, setMediaIndex, setExp
         <div className={`mini-controls fade ${controlsVisible}`}>
             {navigationVisible && controlButton(prevMedia, 'fa-chevron-left')}
 
-            {controlButton(toggleExpanded, 'fa-expand')}
+            {controlButton(toggleExpanded, expandIcon)}
 
             {navigationVisible && controlButton(nextMedia, 'fa-chevron-right')}
         </div>
