@@ -1,6 +1,7 @@
 import './ProjectPreview.css'
 
 import MiniControls from './controls/MiniControls'
+import ThumbnailControls from './controls/ThumbnailControls'
 import Image from './media/Image'
 import Video from './media/Video'
 import { PreviewTypes, getType } from './types/PreviewTypes'
@@ -39,9 +40,15 @@ export default function ProjectPreview({ media }: Props) {
 
     const miniControls = <MiniControls
         media={media}
-        isMouseOver={isMouseOver}
+        isMouseOver={isMouseOver || isExpanded}
         setMediaIndex={setMediaIndex}
         setExpanded={setExpanded}
+    />
+
+    const thumbnailControls = <ThumbnailControls
+        media={media}
+        mediaIndex={mediaIndex}
+        setMediaIndex={setMediaIndex}
     />
 
     function onMouseEnter() {
@@ -68,6 +75,7 @@ export default function ProjectPreview({ media }: Props) {
                 onClick={onClick}
             >
                 {preview}
+                {isExpanded && thumbnailControls}
                 {miniControls}
             </span>
 

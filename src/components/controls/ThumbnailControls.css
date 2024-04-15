@@ -1,0 +1,18 @@
+.thumbnails {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.thumbnail {
+    width: 90px !important;
+    height: 60px !important;
+    max-height: 60px !important;
+    object-fit: cover !important;
+    filter: brightness(0.5);
+    transition: filter 0.2s;
+}
+
+.thumbnail:hover,
+.thumbnail.selected {
+    filter: brightness(1);
+}
