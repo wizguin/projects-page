@@ -1,0 +1,13 @@
+.seekbar-container {
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    background: #ffffff33;
+}
+
+.seekbar {
+    width: 75%;
+    height: 100%;
+    background: #fff;
+}
