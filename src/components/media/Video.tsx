@@ -1,41 +1,81 @@
 import './Video.css'
 
-import { useState, useEffect, useRef, MutableRefObject, SyntheticEvent } from 'react'
+import { useState, useEffect, useRef, MouseEvent } from 'react'
 
 interface Props {
     src: string,
-    isMouseOver: boolean
+    isMouseOver: boolean,
+    isExpanded: boolean
 }
 
-export default function Video({ src, isMouseOver }: Props) {
+export default function Video({ src, isMouseOver, isExpanded }: Props) {
     const [isPlaying, setIsPlaying] = useState(false)
+    const [progress, setProgress] = useState(0)
 
-    const ref: MutableRefObject<HTMLVideoElement | null> = useRef(null)
+    const videoRef = useRef<HTMLVideoElement | null>(null)
+    const seekbarRef = useRef<HTMLDivElement | null>(null)
 
     const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
     const hidePlayButton = isPlaying && !isMouseOver ? 'hidden' : ''
 
     useEffect(() => {
         if (isPlaying) {
-            ref.current?.play()
+            videoRef.current?.play()
         } else {
-            ref.current?.pause()
+            videoRef.current?.pause()
         }
     }, [isPlaying])
 
-    function togglePlayback(event: SyntheticEvent) {
+    useEffect(() => {
+        function updateProgress() {
+            if (videoRef.current) {
+                setProgress(videoRef.current.currentTime / videoRef.current.duration)
+            }
+        }
+
+        const interval = setInterval(updateProgress, 20)
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
+
+    function togglePlayback(event: MouseEvent) {
         event.preventDefault()
         event.stopPropagation()
 
         setIsPlaying(prev => !prev)
     }
 
+    function onSeekbarClick(event: MouseEvent) {
+        event.stopPropagation()
+
+        if (!seekbarRef.current) return
+
+        const rect = seekbarRef.current.getBoundingClientRect()
+        const x = event.clientX - rect.left
+        const percent = x / rect.width
+
+        if (videoRef.current) {
+            videoRef.current.currentTime = videoRef.current.duration * percent
+        }
+    }
+
+    const seekbar = <div
+        ref={seekbarRef}
+        className='seekbar-container'
+        role='button'
+        onClick={onSeekbarClick}
+    >
+        <div className='seekbar' style={{ width: `${progress * 100}%` }}></div>
+    </div>
+
     return (
         <span className='video-container'>
             <i className={`play-button fa-solid fade ${playIcon} ${hidePlayButton}`}></i>
 
             <video
-                ref={ref}
+                ref={videoRef}
                 role='button'
                 onClick={togglePlayback}
                 onPlay={() => setIsPlaying(true)}
@@ -45,6 +85,8 @@ export default function Video({ src, isMouseOver }: Props) {
             >
                 <source src={src} />
             </video>
+
+            {isExpanded && seekbar}
         </span>
     )
 }
