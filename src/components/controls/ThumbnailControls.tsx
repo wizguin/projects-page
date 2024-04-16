@@ -1,6 +1,6 @@
 import './ThumbnailControls.css'
 
-import { Dispatch, SetStateAction, SyntheticEvent } from 'react'
+import { Dispatch, SetStateAction, MouseEvent } from 'react'
 
 interface Props {
     media: string[],
@@ -14,7 +14,7 @@ export default function ThumbnailControls({ media, mediaIndex, setMediaIndex }: 
 
         const src = `assets/thumbnails/${fileName.split('.')[0]}.jpg`
 
-        const onClick = (event: SyntheticEvent) => {
+        const onClick = (event: MouseEvent) => {
             event.stopPropagation()
 
             setMediaIndex(index)
