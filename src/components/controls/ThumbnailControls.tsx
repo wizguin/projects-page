@@ -21,6 +21,7 @@ export default function ThumbnailControls({ media, mediaIndex, setMediaIndex }: 
         }
 
         return <img
+            key={index}
             className={className}
             src={src}
             role='button'
