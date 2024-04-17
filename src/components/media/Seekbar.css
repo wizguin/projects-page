@@ -1,8 +1,14 @@
 .seekbar-container {
     width: 100%;
-    height: 20px;
+    height: 30px;
     position: absolute;
     bottom: 0;
+    padding: 0.8rem;
+}
+
+.seekbar-bg {
+    width: 100%;
+    height: 100%;
     background: #ffffff33;
 }
 
@@ -10,4 +16,9 @@
     width: 75%;
     height: 100%;
     background: #fff;
+}
+
+.seekbar-bg,
+.seekbar {
+    border-radius: 1rem;
 }

@@ -48,7 +48,9 @@ export default function Seekbar({ videoRef, visible }: Props) {
             role='button'
             onClick={onSeekbarClick}
         >
-            <div className='seekbar' style={{ width: `${progress * 100}%` }}></div>
+            <div className='seekbar-bg' ref={seekbarRef}>
+                <div className='seekbar' style={{ width: `${progress * 100}%` }}></div>
+            </div>
         </div>
     )
 }
