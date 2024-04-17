@@ -3,13 +3,16 @@ import './Seekbar.css'
 import { useState, useEffect, useRef, MouseEvent, MutableRefObject } from 'react'
 
 interface Props {
-    videoRef: MutableRefObject<HTMLVideoElement | null>
+    videoRef: MutableRefObject<HTMLVideoElement | null>,
+    visible: boolean
 }
 
-export default function Seekbar({ videoRef }: Props) {
+export default function Seekbar({ videoRef, visible }: Props) {
     const [progress, setProgress] = useState(0)
 
     const seekbarRef = useRef<HTMLDivElement | null>(null)
+
+    const hideSeekbar = visible ? '' : 'hidden'
 
     useEffect(() => {
         function updateProgress() {
@@ -41,8 +44,7 @@ export default function Seekbar({ videoRef }: Props) {
 
     return (
         <div
-            ref={seekbarRef}
-            className='seekbar-container'
+            className={`seekbar-container fade ${hideSeekbar}`}
             role='button'
             onClick={onSeekbarClick}
         >
