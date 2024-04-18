@@ -17,7 +17,7 @@ export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: 
 
     const seekbarRef = useRef<HTMLDivElement | null>(null)
 
-    const hideSeekbar = visible ? '' : 'hidden'
+    const hideSeekbar = visible || isSeeking ? '' : 'hidden'
 
     const seek = useCallback((clientX: number) => {
         if (!seekbarRef.current) return
