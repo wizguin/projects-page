@@ -58,6 +58,13 @@
     translate: initial;
 }
 
+.card-media.expanded img,
+.card-media.expanded .video-container,
+.card-media.expanded .mini-controls,
+.card-media.expanded .thumbnail {
+    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);
+}
+
 .expanded-bg {
     position: absolute;
     top: 0;
