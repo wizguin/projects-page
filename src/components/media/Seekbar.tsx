@@ -1,16 +1,19 @@
 import './Seekbar.css'
 
 import { useState, useEffect, useRef, useCallback,
-    MutableRefObject, MouseEvent as ReactMouseEvent } from 'react'
+    MutableRefObject, Dispatch, SetStateAction, MouseEvent as ReactMouseEvent } from 'react'
 
 interface Props {
     videoRef: MutableRefObject<HTMLVideoElement | null>,
-    visible: boolean
+    visible: boolean,
+    isPlaying: boolean,
+    setIsPlaying: Dispatch<SetStateAction<boolean>>
 }
 
-export default function Seekbar({ videoRef, visible }: Props) {
+export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: Props) {
     const [progress, setProgress] = useState(0)
     const [isSeeking, setIsSeeking] = useState(false)
+    const [wasPlaying, setWasPlaying] = useState(isPlaying)
 
     const seekbarRef = useRef<HTMLDivElement | null>(null)
 
@@ -58,6 +61,10 @@ export default function Seekbar({ videoRef, visible }: Props) {
         }
 
         function onMouseUp()  {
+            if (wasPlaying) {
+                setIsPlaying(true)
+            }
+
             setIsSeeking(false)
         }
 
@@ -68,23 +75,22 @@ export default function Seekbar({ videoRef, visible }: Props) {
         }
 
         return removeEvents
-    }, [isSeeking, seek])
-
-    function onSeekbarClick(event: ReactMouseEvent) {
-        seek(event.clientX)
-    }
+    }, [isSeeking])
 
     function onSeekbarDown(event: ReactMouseEvent) {
         event.preventDefault()
 
+        setWasPlaying(isPlaying)
+        setIsPlaying(false)
         setIsSeeking(true)
+
+        seek(event.clientX)
     }
 
     return (
         <div
             className={`seekbar-container fade ${hideSeekbar}`}
             role='button'
-            onClick={onSeekbarClick}
             onMouseDown={onSeekbarDown}
         >
             <div className='seekbar-bg' ref={seekbarRef}>
