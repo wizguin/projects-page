@@ -37,8 +37,6 @@
     height: 100%;
     padding: 1rem;
     z-index: 10;
-    background: #00000075;
-    backdrop-filter: blur(4px);
     animation: fadeIn 0.4s;
 }
 
@@ -58,4 +56,15 @@
 .card-media.expanded .mini-controls {
     position: initial;
     translate: initial;
+}
+
+.expanded-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000075;
+    backdrop-filter: blur(3px);
+    z-index: -1;
 }

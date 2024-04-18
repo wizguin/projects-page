@@ -52,18 +52,14 @@ export default function ProjectPreview({ media }: Props) {
         setMediaIndex={setMediaIndex}
     />
 
+    const background = <div className='expanded-bg' onClick={() => setExpanded(false)}></div>
+
     function onMouseEnter() {
         setIsMouseOver(true)
     }
 
     function onMouseLeave() {
         setIsMouseOver(false)
-    }
-
-    function onClick() {
-        if (isExpanded) {
-            setExpanded(false)
-        }
     }
 
     return (
@@ -73,8 +69,8 @@ export default function ProjectPreview({ media }: Props) {
                 className={`card-media ${isExpanded ? 'expanded' : ''}`}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                onClick={onClick}
             >
+                {isExpanded && background}
                 {preview}
                 {isExpanded && thumbnailControls}
                 {miniControls}
