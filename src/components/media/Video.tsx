@@ -33,21 +33,39 @@ export default function Video({ src, showSeekbar }: Props) {
         }
     }, [isPlaying])
 
-    function togglePlayback(event: MouseEvent) {
+    function onClick(event: MouseEvent) {
         event.preventDefault()
         event.stopPropagation()
 
         setIsPlaying(prev => !prev)
     }
 
+    function onDoubleClick() {
+        // videoRef.current?.requestFullscreen()
+    }
+
+    function onMouseEnter() {
+        setIsMouseOver(true)
+    }
+
+    function onMouseLeave() {
+        setIsMouseOver(false)
+    }
+
     return (
-        <span className='video-container'>
+        <span
+            className='video-container'
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onMouseMove={onMouseEnter}
+        >
             <i className={`play-button fa-solid fade ${playIcon} ${hidePlayButton}`}></i>
 
             <video
                 ref={videoRef}
                 role='button'
-                onClick={togglePlayback}
+                onClick={onClick}
+                onDoubleClick={onDoubleClick}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 loop
