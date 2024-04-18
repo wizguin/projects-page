@@ -34,7 +34,7 @@ export default function ProjectPreview({ media }: Props) {
             break
 
         case PreviewTypes.Video:
-            preview = <Video src={src} isMouseOver={isMouseOver} isExpanded={isExpanded} />
+            preview = <Video src={src} showSeekbar={isExpanded} />
             break
     }
 

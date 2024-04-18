@@ -6,11 +6,11 @@ import { useState, useEffect, useRef, MouseEvent } from 'react'
 
 interface Props {
     src: string,
-    isMouseOver: boolean,
-    isExpanded: boolean
+    showSeekbar: boolean
 }
 
-export default function Video({ src, isMouseOver, isExpanded }: Props) {
+export default function Video({ src, showSeekbar }: Props) {
+    const [isMouseOver, setIsMouseOver] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -56,7 +56,7 @@ export default function Video({ src, isMouseOver, isExpanded }: Props) {
                 <source src={src} />
             </video>
 
-            {isExpanded && seekbar}
+            {showSeekbar && seekbar}
         </span>
     )
 }
