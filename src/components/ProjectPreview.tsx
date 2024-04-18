@@ -2,7 +2,6 @@ import './ProjectPreview.css'
 
 import MiniControls from './controls/MiniControls'
 import ThumbnailControls from './controls/ThumbnailControls'
-import Image from './media/Image'
 import Video from './media/Video'
 import { PreviewTypes, getType } from './types/PreviewTypes'
 
@@ -30,7 +29,7 @@ export default function ProjectPreview({ media }: Props) {
 
     switch (type) {
         case PreviewTypes.Image:
-            preview = <Image src={src} />
+            preview = <img src={src} />
             break
 
         case PreviewTypes.Video:
