@@ -75,7 +75,7 @@ export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: 
         }
 
         return removeEvents
-    }, [isSeeking])
+    }, [isSeeking, seek, setIsPlaying, wasPlaying])
 
     function onSeekbarDown(event: ReactMouseEvent) {
         event.preventDefault()
