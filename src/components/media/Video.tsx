@@ -18,7 +18,12 @@ export default function Video({ src, isMouseOver, isExpanded }: Props) {
     const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
     const hidePlayButton = isPlaying && !isMouseOver ? 'hidden' : ''
 
-    const seekbar = <Seekbar videoRef={videoRef} />
+    const seekbar = <Seekbar
+        videoRef={videoRef}
+        visible={isMouseOver}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+    />
 
     useEffect(() => {
         if (isPlaying) {
