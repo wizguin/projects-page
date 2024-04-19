@@ -13,6 +13,7 @@ export default function Video({ src, showSeekbar }: Props) {
     const [isMouseOver, setIsMouseOver] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
 
+    const containerRef = useRef<HTMLElement | null>(null)
     const videoRef = useRef<HTMLVideoElement | null>(null)
     const timeoutRef = useRef<number | null>(null)
 
@@ -42,7 +43,11 @@ export default function Video({ src, showSeekbar }: Props) {
     }
 
     function onDoubleClick() {
-        // videoRef.current?.requestFullscreen()
+        if (document.fullscreenElement) {
+            document.exitFullscreen()
+        } else {
+            containerRef.current?.requestFullscreen()
+        }
     }
 
     function mouseOver() {
@@ -63,6 +68,7 @@ export default function Video({ src, showSeekbar }: Props) {
 
     return (
         <span
+            ref={containerRef}
             className='video-container'
             onMouseEnter={mouseOver}
             onMouseLeave={mouseOut}

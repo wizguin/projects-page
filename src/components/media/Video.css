@@ -20,3 +20,13 @@
     max-width: 100%;
     margin: auto;
 }
+
+.video-container:fullscreen {
+    background: #000;
+    border-radius: 0;
+}
+
+.video-container:fullscreen video {
+    object-fit: contain;
+    border-radius: 0;
+}
