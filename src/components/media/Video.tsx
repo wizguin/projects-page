@@ -47,6 +47,18 @@ export default function Video({ src, isExpanded }: Props) {
         }
     }, [])
 
+    useEffect(() => {
+        if (!containerRef.current) {
+            return
+        }
+
+        if (isMouseOver) {
+            containerRef.current.style.cursor = 'default'
+        } else {
+            containerRef.current.style.cursor = 'none'
+        }
+    }, [isMouseOver])
+
     function onClick(event: MouseEvent) {
         event.preventDefault()
         event.stopPropagation()
