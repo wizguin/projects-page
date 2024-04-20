@@ -12,6 +12,7 @@ interface Props {
 export default function Video({ src, showSeekbar }: Props) {
     const [isMouseOver, setIsMouseOver] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
+    const [isFullscreen, setIsFullscreen] = useState(false)
 
     const containerRef = useRef<HTMLElement | null>(null)
     const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -34,6 +35,17 @@ export default function Video({ src, showSeekbar }: Props) {
             videoRef.current?.pause()
         }
     }, [isPlaying])
+    useEffect(() => {
+        function onFullscreenChange() {
+            setIsFullscreen(!!document.fullscreenElement)
+        }
+
+        document.addEventListener('fullscreenchange', onFullscreenChange)
+
+        return () => {
+            document.removeEventListener('fullscreenchange', onFullscreenChange)
+        }
+    }, [])
 
     function onClick(event: MouseEvent) {
         event.preventDefault()
@@ -91,7 +103,7 @@ export default function Video({ src, showSeekbar }: Props) {
                 <source src={src} />
             </video>
 
-            {showSeekbar && seekbar}
+            {(showSeekbar || isFullscreen) && seekbar}
         </span>
     )
 }
