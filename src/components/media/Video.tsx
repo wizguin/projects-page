@@ -25,6 +25,7 @@ export default function Video({ src, isExpanded }: Props) {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         isFullscreen={isFullscreen}
+        toggleFullscreen={toggleFullscreen}
     />
 
     useEffect(() => {
@@ -65,14 +66,6 @@ export default function Video({ src, isExpanded }: Props) {
         setIsPlaying(prev => !prev)
     }
 
-    function onDoubleClick() {
-        if (document.fullscreenElement) {
-            document.exitFullscreen()
-        } else {
-            containerRef.current?.requestFullscreen()
-        }
-    }
-
     function mouseOver() {
         setIsMouseOver(true)
 
@@ -87,6 +80,14 @@ export default function Video({ src, isExpanded }: Props) {
 
     function mouseOut() {
         setIsMouseOver(false)
+    }
+
+    function toggleFullscreen() {
+        if (document.fullscreenElement) {
+            document.exitFullscreen()
+        } else {
+            containerRef.current?.requestFullscreen()
+        }
     }
 
     return (

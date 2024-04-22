@@ -10,10 +10,11 @@ interface Props {
     isMouseOver: boolean,
     isPlaying: boolean,
     setIsPlaying: Dispatch<SetStateAction<boolean>>,
-    isFullscreen: boolean
+    isFullscreen: boolean,
+    toggleFullscreen: () => void
 }
 
-export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPlaying, setIsPlaying , isFullscreen}: Props) {
+export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPlaying, setIsPlaying , isFullscreen, toggleFullscreen}: Props) {
 
     const playState = isExpanded || isFullscreen ? 'play-corner' : 'play-center'
     const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
@@ -23,7 +24,7 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
     const iconVisible = isPlaying && !isMouseOver ? 'hidden' : ''
 
     const playButton = controlButton(onPlayClick, 'play-button', playState, playIcon, iconVisible)
-    const fullscreenButton = controlButton(onPlayClick, 'fullscreen-button', fullscreenIcon, iconVisible)
+    const fullscreenButton = controlButton(onFullscreenClick, 'fullscreen-button', fullscreenIcon, iconVisible)
 
     const seekbar = <Seekbar
         videoRef={videoRef}
@@ -40,7 +41,10 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
     }
 
     function onFullscreenClick(event: MouseEvent) {
+        event.preventDefault()
+        event.stopPropagation()
 
+        toggleFullscreen()
     }
 
     function controlButton(onClick: (event: MouseEvent) => void, ...classNames: string[]) {
