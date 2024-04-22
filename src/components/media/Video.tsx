@@ -28,6 +28,14 @@ export default function Video({ src, isExpanded }: Props) {
         toggleFullscreen={toggleFullscreen}
     />
 
+    // Set cursor style on mouse over/out
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.style.cursor = isMouseOver ? 'default' : 'none'
+        }
+    }, [isMouseOver])
+
+    // Set video playing/paused
     useEffect(() => {
         if (isPlaying) {
             videoRef.current?.play()
@@ -35,6 +43,8 @@ export default function Video({ src, isExpanded }: Props) {
             videoRef.current?.pause()
         }
     }, [isPlaying])
+
+    // Set isFullscreen state
     useEffect(() => {
         function onFullscreenChange() {
             setIsFullscreen(!!document.fullscreenElement)
@@ -47,18 +57,7 @@ export default function Video({ src, isExpanded }: Props) {
         }
     }, [])
 
-    useEffect(() => {
-        if (!containerRef.current) {
-            return
-        }
-
-        if (isMouseOver) {
-            containerRef.current.style.cursor = 'default'
-        } else {
-            containerRef.current.style.cursor = 'none'
-        }
-    }, [isMouseOver])
-
+    // Keyboard shortcuts
     useEffect(() => {
         if (!videoRef.current) {
             return
@@ -83,7 +82,7 @@ export default function Video({ src, isExpanded }: Props) {
             current.removeEventListener('keydown', onKeyDown)
         }
 
-    }, [videoRef])
+    }, [])
 
     function onClick(event: MouseEvent) {
         event.preventDefault()
