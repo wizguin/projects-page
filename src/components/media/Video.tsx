@@ -72,6 +72,7 @@ export default function Video({ src, isExpanded }: Props) {
                     break
                 case ' ':
                     setIsPlaying(prev => !prev)
+                    mouseOver()
                     break
             }
         }
