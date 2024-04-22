@@ -17,12 +17,17 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
 
     const playState = isExpanded || isFullscreen ? 'play-corner' : 'play-center'
     const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
+
+    const fullscreenIcon = isFullscreen ? 'fa-compress' : 'fa-expand'
+
     const iconVisible = isPlaying && !isMouseOver ? 'hidden' : ''
+
     const playButton = controlButton(onPlayClick, 'play-button', playState, playIcon, iconVisible)
+    const fullscreenButton = controlButton(onPlayClick, 'fullscreen-button', fullscreenIcon, iconVisible)
 
     const seekbar = <Seekbar
         videoRef={videoRef}
-        visible={isMouseOver}
+        visible={(isExpanded && !isPlaying) || isMouseOver}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
     />
@@ -32,6 +37,10 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
         event.stopPropagation()
 
         setIsPlaying(prev => !prev)
+    }
+
+    function onFullscreenClick(event: MouseEvent) {
+
     }
 
     function controlButton(onClick: (event: MouseEvent) => void, ...classNames: string[]) {
@@ -48,6 +57,7 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
     return (
         <>
             {playButton}
+            {(isExpanded || isFullscreen) && fullscreenButton}
 
             {(isExpanded || isFullscreen) && seekbar}
         </>
