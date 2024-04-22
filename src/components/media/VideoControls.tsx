@@ -15,8 +15,10 @@ interface Props {
 
 export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPlaying, setIsPlaying , isFullscreen}: Props) {
 
+    const playState = isExpanded || isFullscreen ? 'play-corner' : 'play-center'
     const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
-    const hidePlayButton = isPlaying && !isMouseOver ? 'hidden' : ''
+    const iconVisible = isPlaying && !isMouseOver ? 'hidden' : ''
+    const playButton = controlButton(onPlayClick, 'play-button', playState, playIcon, iconVisible)
 
     const seekbar = <Seekbar
         videoRef={videoRef}
@@ -32,15 +34,22 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
         setIsPlaying(prev => !prev)
     }
 
+    function controlButton(onClick: (event: MouseEvent) => void, ...classNames: string[]) {
+        console.log(`${classNames.join(' ')} fa-solid fade`)
+        return (
+            <i
+                className={`${classNames.join(' ')} fa-solid fade`}
+                role='button'
+                onClick={onClick}
+            ></i>
+        )
+    }
+
     return (
         <>
-            <i
-                className={`play-button fa-solid fade ${playIcon} ${hidePlayButton}`}
-                role='button'
-                onClick={onPlayClick}
-            ></i>
+            {playButton}
 
-             {(isExpanded || isFullscreen) && seekbar}
+            {(isExpanded || isFullscreen) && seekbar}
         </>
     )
 

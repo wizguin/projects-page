@@ -1,9 +1,27 @@
-.play-button {
+.play-button,
+.fullscreen-button {
     position: absolute;
+    color: #fff;
+    text-shadow: 1px 1px 20px rgba(30,30,30,1);
+}
+
+.play-center {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
     font-size: 60px;
-    color: #fff;
-    text-shadow: 1px 1px 20px rgba(30,30,30,1);
+}
+
+.play-corner {
+    left: 2rem;
+}
+
+.fullscreen-button {
+    right: 2rem;
+}
+
+.play-corner,
+.fullscreen-button {
+    bottom: 40px;
+    font-size: 20px;
 }
