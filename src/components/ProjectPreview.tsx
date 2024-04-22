@@ -5,7 +5,7 @@ import ThumbnailControls from './controls/ThumbnailControls'
 import Video from './media/Video'
 import { PreviewTypes, getType } from './types/PreviewTypes'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface Props {
     media: string[]
@@ -17,10 +17,6 @@ export default function ProjectPreview({ media }: Props) {
     const [mediaIndex, setMediaIndex] = useState(0)
 
     const fileName = media[mediaIndex]
-
-    if (!fileName) {
-        return
-    }
 
     const type = getType(fileName)
     const src = `assets/previews/${fileName}`
@@ -52,6 +48,12 @@ export default function ProjectPreview({ media }: Props) {
     />
 
     const background = <div className='expanded-bg' onClick={() => setExpanded(false)}></div>
+
+    useEffect(() => {
+        if (!isExpanded) {
+            setIsMouseOver(false)
+        }
+    }, [isExpanded])
 
     function onMouseEnter() {
         setIsMouseOver(true)
