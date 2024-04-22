@@ -1,14 +1,16 @@
 .seekbar-container {
+    display: flex;
+    align-items: center;
     width: 100%;
-    height: 30px;
+    height: 40px;
     position: absolute;
     bottom: 0;
-    padding: 0.8rem;
+    padding: 0 1.5rem;
 }
 
 .seekbar-bg {
     width: 100%;
-    height: 100%;
+    height: 5px;
     background: #ffffff33;
 }
 
