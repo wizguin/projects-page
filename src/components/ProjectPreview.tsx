@@ -92,6 +92,7 @@ export default function ProjectPreview({ media }: Props) {
                 className={`card-media ${isExpanded ? 'expanded' : ''}`}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
+                onMouseMove={onMouseEnter}
             >
                 {isExpanded && background}
                 {preview}
