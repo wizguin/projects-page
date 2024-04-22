@@ -2,11 +2,10 @@ import './Header.css'
 
 interface Props {
     headerTitle: string,
-    projectsTitle?: string,
     githubUrl?: string
 }
 
-export default function Header({ headerTitle, projectsTitle = 'Projects', githubUrl = 'github' }: Props) {
+export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
     return (
         <>
             <header>
@@ -17,8 +16,6 @@ export default function Header({ headerTitle, projectsTitle = 'Projects', github
                         <i className='fa-brands fa-github'></i>
                     </a>
                 </div>
-
-                <h2>{projectsTitle}</h2>
             </header>
 
             <div className='header-gradient'></div>

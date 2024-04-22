@@ -2,20 +2,17 @@ import './App.css'
 
 import data from './data'
 import Header from './components/Header'
-import ProjectCard from './components/ProjectCard'
+import Section from './components/Section'
 
 function App() {
-    const projects = data.projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
+    const sections = data.sections.map((section, index) => (
+        <Section key={index} {...section} />
     ))
 
     return (
         <>
             <Header headerTitle={data.headerTitle} />
-
-            <section className='cards'>
-                {projects}
-            </section>
+            {sections}
         </>
     )
 }

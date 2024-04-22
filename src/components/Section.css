@@ -1,0 +1,11 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.cards h2 {
+    z-index: 1;
+}
