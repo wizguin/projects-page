@@ -16,7 +16,9 @@ interface Props {
 
 export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPlaying, setIsPlaying , isFullscreen, toggleFullscreen}: Props) {
 
-    const playState = isExpanded || isFullscreen ? 'play-corner' : 'play-center'
+    const isLargeView = isExpanded || isFullscreen
+
+    const playState = isLargeView ? 'play-corner' : 'play-center'
     const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
 
     const fullscreenIcon = isFullscreen ? 'fa-compress' : 'fa-expand'
@@ -28,7 +30,7 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
 
     const seekbar = <Seekbar
         videoRef={videoRef}
-        visible={(isExpanded && !isPlaying) || isMouseOver}
+        visible={(isLargeView && !isPlaying) || isMouseOver}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
     />
@@ -61,9 +63,9 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
     return (
         <>
             {playButton}
-            {(isExpanded || isFullscreen) && fullscreenButton}
+            {isLargeView && fullscreenButton}
 
-            {(isExpanded || isFullscreen) && seekbar}
+            {isLargeView && seekbar}
         </>
     )
 
