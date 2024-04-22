@@ -1,6 +1,6 @@
 import './Video.css'
 
-import Seekbar from './Seekbar'
+import VideoControls from './VideoControls'
 
 import { useState, useEffect, useRef, MouseEvent } from 'react'
 
@@ -18,14 +18,13 @@ export default function Video({ src, isExpanded }: Props) {
     const videoRef = useRef<HTMLVideoElement | null>(null)
     const timeoutRef = useRef<number | null>(null)
 
-    const playIcon = isPlaying ? 'fa-pause' : 'fa-play'
-    const hidePlayButton = isPlaying && !isMouseOver ? 'hidden' : ''
-
-    const seekbar = <Seekbar
+    const controls = <VideoControls
         videoRef={videoRef}
-        visible={isMouseOver}
+        isExpanded={isExpanded}
+        isMouseOver={isMouseOver}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        isFullscreen={isFullscreen}
     />
 
     useEffect(() => {
@@ -100,11 +99,8 @@ export default function Video({ src, isExpanded }: Props) {
             onMouseDown={mouseOver}
             onMouseUp={mouseOver}
         >
-            <i className={`play-button fa-solid fade ${playIcon} ${hidePlayButton}`}></i>
-
             <video
                 ref={videoRef}
-                role='button'
                 onClick={onClick}
                 onDoubleClick={onDoubleClick}
                 onPlay={() => setIsPlaying(true)}
@@ -115,7 +111,7 @@ export default function Video({ src, isExpanded }: Props) {
                 <source src={src} />
             </video>
 
-            {(isExpanded || isFullscreen) && seekbar}
+            {controls}
         </span>
     )
 }
