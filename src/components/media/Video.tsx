@@ -59,6 +59,32 @@ export default function Video({ src, isExpanded }: Props) {
         }
     }, [isMouseOver])
 
+    useEffect(() => {
+        if (!videoRef.current) {
+            return
+        }
+
+        const current = videoRef.current
+
+        function onKeyDown(event: KeyboardEvent) {
+            switch (event.key) {
+                case 'f':
+                    toggleFullscreen()
+                    break
+                case ' ':
+                    setIsPlaying(prev => !prev)
+                    break
+            }
+        }
+
+        current.addEventListener('keydown', onKeyDown)
+
+        return () => {
+            current.removeEventListener('keydown', onKeyDown)
+        }
+
+    }, [videoRef])
+
     function onClick(event: MouseEvent) {
         event.preventDefault()
         event.stopPropagation()
@@ -103,11 +129,12 @@ export default function Video({ src, isExpanded }: Props) {
             <video
                 ref={videoRef}
                 onClick={onClick}
-                onDoubleClick={onDoubleClick}
+                onDoubleClick={toggleFullscreen}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 loop
                 muted
+                tabIndex={0}
             >
                 <source src={src} />
             </video>

@@ -10,6 +10,10 @@
     margin: auto;
 }
 
+.video-container video:focus {
+    outline: none !important;
+}
+
 .video-container:fullscreen {
     background: #000;
     border-radius: 0;
