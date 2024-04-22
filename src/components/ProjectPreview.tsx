@@ -55,6 +55,28 @@ export default function ProjectPreview({ media }: Props) {
         }
     }, [isExpanded])
 
+    // Keyboard shortcuts
+    useEffect(() => {
+        if (!isExpanded) {
+            return
+        }
+
+        function onKeyDown(event: KeyboardEvent) {
+            switch (event.key) {
+                case 'Escape':
+                    setExpanded(false)
+                    break
+            }
+        }
+
+        window.addEventListener('keydown', onKeyDown)
+
+        return () => {
+            window.removeEventListener('keydown', onKeyDown)
+        }
+
+    }, [isExpanded])
+
     function onMouseEnter() {
         setIsMouseOver(true)
     }
