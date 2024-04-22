@@ -50,7 +50,6 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
     }
 
     function controlButton(onClick: (event: MouseEvent) => void, ...classNames: string[]) {
-        console.log(`${classNames.join(' ')} fa-solid fade`)
         return (
             <i
                 className={`${classNames.join(' ')} fa-solid fade`}
