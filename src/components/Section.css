@@ -9,3 +9,7 @@
 .cards h2 {
     z-index: 1;
 }
+
+.cards:last-child {
+    padding-bottom: 3rem;
+}
