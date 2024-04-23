@@ -119,7 +119,6 @@ export default function Video({ src, isExpanded }: Props) {
     return (
         <span
             ref={containerRef}
-            key={src}
             className='video-container'
             onMouseEnter={mouseOver}
             onMouseLeave={mouseOut}

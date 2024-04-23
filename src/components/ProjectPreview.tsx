@@ -29,7 +29,7 @@ export default function ProjectPreview({ media }: Props) {
             break
 
         case PreviewTypes.Video:
-            preview = <Video src={src} isExpanded={isExpanded} />
+            preview = <Video src={src} isExpanded={isExpanded} key={src} />
             break
     }
 
