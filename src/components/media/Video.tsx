@@ -120,6 +120,8 @@ export default function Video({ src, isExpanded }: Props) {
         <span
             ref={containerRef}
             className='video-container'
+            onClick={onClick}
+            onDoubleClick={toggleFullscreen}
             onMouseEnter={mouseOver}
             onMouseLeave={mouseOut}
             onMouseMove={mouseOver}
@@ -128,8 +130,6 @@ export default function Video({ src, isExpanded }: Props) {
         >
             <video
                 ref={videoRef}
-                onClick={onClick}
-                onDoubleClick={toggleFullscreen}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 loop
