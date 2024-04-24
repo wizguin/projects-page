@@ -92,6 +92,8 @@ export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: 
             className={`seekbar-container fade ${hideSeekbar}`}
             role='button'
             onMouseDown={onSeekbarDown}
+            // Prevent click event on video container
+            onClick={e => e.stopPropagation()}
         >
             <div className='seekbar-bg' ref={seekbarRef}>
                 <div className='seekbar' style={{ width: `${progress * 100}%` }}></div>
