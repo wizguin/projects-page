@@ -85,6 +85,25 @@ export default function Video({ src, isExpanded }: Props) {
 
     }, [])
 
+    // Set container aspect ratio to match video
+    useEffect(() => {
+        function updateContainer() {
+            if (videoRef.current && containerRef.current) {
+                containerRef.current.style.aspectRatio = `${videoRef.current.videoWidth} / ${videoRef.current.videoHeight}`
+            }
+        }
+
+        const current = videoRef.current
+
+        current?.addEventListener('loadeddata', updateContainer)
+        window.addEventListener('resize', updateContainer)
+
+        return () => {
+            current?.removeEventListener('loadeddata', updateContainer)
+            window.addEventListener('resize', updateContainer)
+        }
+    }, [])
+
     function onClick(event: MouseEvent) {
         event.preventDefault()
         event.stopPropagation()
