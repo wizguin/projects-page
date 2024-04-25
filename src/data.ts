@@ -1,25 +1,41 @@
-import { Props as Project } from './components/ProjectCard'
-import PreviewTypes from './components/types/PreviewTypes'
+import { Props as Section } from './components/Section'
 
 interface Data {
     headerTitle: string,
-    projects: Project[]
+    sections: Section[]
 }
 
-const data:Data = {
+const data: Data = {
     headerTitle: 'Portfolio',
-    projects: [
+    sections: [
         {
-            title: 'Project',
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            `,
-            badges: ['Node.js', 'React'],
-            demoUrl: 'demo',
-            sourceUrl: 'source',
-            previewType: PreviewTypes.Image,
-            previewFile: 'preview.jpg'
+            title: 'Projects',
+            projects: [
+                {
+                    title: 'Project',
+                    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+                    badges: ['Node.js', 'React'],
+                    demoUrl: 'demo',
+                    sourceUrl: 'source',
+                    media: [
+                        'sample_image.jpg',
+                        'sample_video.mp4'
+                    ]
+                },
+                {
+                    title: 'Project',
+                    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+                    badges: ['Node.js', 'React'],
+                    demoUrl: 'demo',
+                    sourceUrl: 'source',
+                    media: [
+                        'sample_video2.mp4',
+                        'sample_video3.mp4'
+                    ]
+                }
+            ]
         }
     ]
 }
