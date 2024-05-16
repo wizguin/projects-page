@@ -149,8 +149,6 @@ export default function Video({ src, isExpanded }: Props) {
         >
             <video
                 ref={videoRef}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
                 loop
                 muted
                 tabIndex={0}
