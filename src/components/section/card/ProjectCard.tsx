@@ -1,6 +1,6 @@
 import './ProjectCard.css'
 
-import ProjectPreview from './ProjectPreview'
+import ProjectPreview from './preview/ProjectPreview'
 
 export interface Props {
     title: string,

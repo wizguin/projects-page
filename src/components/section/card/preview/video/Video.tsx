@@ -1,6 +1,6 @@
 import './Video.css'
 
-import VideoControls from './VideoControls'
+import VideoControls from './controls/VideoControls'
 
 import { useState, useEffect, useRef, MouseEvent } from 'react'
 

@@ -3,8 +3,8 @@ import './ProjectPreview.css'
 import MiniControls from './controls/MiniControls'
 import ThumbnailControls from './controls/ThumbnailControls'
 
-import Image from './media/Image'
-import Video from './media/Video'
+import Image from './image/Image'
+import Video from './video/Video'
 
 import { PreviewTypes, getType } from './types/PreviewTypes'
 

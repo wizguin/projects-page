@@ -1,8 +1,8 @@
 import './Section.css'
 
-import ProjectCard from './ProjectCard'
+import ProjectCard from './card/ProjectCard'
 
-import { Props as Project } from './ProjectCard'
+import { Props as Project } from './card/ProjectCard'
 
 export interface Props {
     title: string,
