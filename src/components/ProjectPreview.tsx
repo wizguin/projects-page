@@ -8,6 +8,7 @@ import Video from './media/Video'
 
 import { PreviewTypes, getType } from './types/PreviewTypes'
 
+import { isMobile } from 'react-device-detect'
 import { useState, useEffect } from 'react'
 
 interface Props {
@@ -38,7 +39,7 @@ export default function ProjectPreview({ media }: Props) {
 
     const miniControls = <MiniControls
         media={media}
-        isVisible={isMouseOver || isExpanded}
+        isVisible={isMobile || isMouseOver || isExpanded}
         isExpanded={isExpanded}
         setMediaIndex={setMediaIndex}
         setExpanded={setExpanded}
