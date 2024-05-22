@@ -13,6 +13,7 @@ export default function Video({ src, isExpanded }: Props) {
     const [isMouseOver, setIsMouseOver] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     const containerRef = useRef<HTMLElement | null>(null)
     const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -27,6 +28,29 @@ export default function Video({ src, isExpanded }: Props) {
         isFullscreen={isFullscreen}
         toggleFullscreen={toggleFullscreen}
     />
+
+    // Reload video when src changes
+    useEffect(() => {
+        setIsLoaded(false)
+
+        if (!videoRef.current) {
+            return
+        }
+
+        const current = videoRef.current
+
+        function onLoad() {
+            setIsLoaded(true)
+        }
+
+        current.addEventListener('loadeddata', onLoad)
+        current.src = src
+        current.load()
+
+        return () => {
+            current.removeEventListener('loadeddata', onLoad)
+        }
+    }, [src])
 
     // Set cursor style on mouse over/out
     useEffect(() => {
@@ -138,7 +162,7 @@ export default function Video({ src, isExpanded }: Props) {
     return (
         <span
             ref={containerRef}
-            className='video-container'
+            className={`video-container ${isLoaded ? 'fade-in' : 'display-none'}`}
             onClick={onClick}
             onDoubleClick={toggleFullscreen}
             onMouseEnter={mouseOver}
@@ -152,9 +176,9 @@ export default function Video({ src, isExpanded }: Props) {
                 loop
                 muted
                 tabIndex={0}
-            >
-                <source src={src} />
-            </video>
+                preload='auto'
+                playsInline
+            />
 
             {controls}
         </span>

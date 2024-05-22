@@ -2,7 +2,10 @@ import './ProjectPreview.css'
 
 import MiniControls from './controls/MiniControls'
 import ThumbnailControls from './controls/ThumbnailControls'
+
+import Image from './media/Image'
 import Video from './media/Video'
+
 import { PreviewTypes, getType } from './types/PreviewTypes'
 
 import { useState, useEffect } from 'react'
@@ -25,11 +28,11 @@ export default function ProjectPreview({ media }: Props) {
 
     switch (type) {
         case PreviewTypes.Image:
-            preview = <img src={src} />
+            preview = <Image src={src} />
             break
 
         case PreviewTypes.Video:
-            preview = <Video src={src} isExpanded={isExpanded} key={src} />
+            preview = <Video src={src} isExpanded={isExpanded} />
             break
     }
 
@@ -89,7 +92,7 @@ export default function ProjectPreview({ media }: Props) {
         <div className='card-preview'>
 
             <span
-                className={`card-media ${isExpanded ? 'expanded' : ''}`}
+                className={`card-media ${isExpanded ? 'expanded fade-in' : ''}`}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
                 onMouseMove={onMouseEnter}
