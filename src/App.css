@@ -96,8 +96,16 @@ button {
     opacity: 0;
 }
 
+.display-none {
+    display: none !important;
+}
+
 .fade {
     transition: opacity 0.2s;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s;
 }
 
 @media (min-width: 1200px) {
