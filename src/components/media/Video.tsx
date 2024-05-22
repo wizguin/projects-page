@@ -31,6 +31,7 @@ export default function Video({ src, isExpanded }: Props) {
 
     // Reload video when src changes
     useEffect(() => {
+        setIsPlaying(false)
         setIsLoaded(false)
 
         if (!videoRef.current) {
