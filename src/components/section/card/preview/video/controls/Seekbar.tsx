@@ -7,12 +7,12 @@ import { useState, useEffect, useRef, useCallback,
 
 interface Props {
     videoRef: MutableRefObject<HTMLVideoElement | null>,
-    visible: boolean,
+    isVisible: boolean,
     isPlaying: boolean,
     setIsPlaying: Dispatch<SetStateAction<boolean>>
 }
 
-export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: Props) {
+export default function Seekbar({ videoRef, isVisible, isPlaying, setIsPlaying }: Props) {
     const [progress, setProgress] = useState(0)
     const [isSeeking, setIsSeeking] = useState(false)
     const [wasPlaying, setWasPlaying] = useState(isPlaying)

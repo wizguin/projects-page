@@ -29,7 +29,7 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
 
     const seekbar = <Seekbar
         videoRef={videoRef}
-        visible={!isPlaying || isMouseOver}
+        isVisible={!isPlaying || isMouseOver}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
     />
