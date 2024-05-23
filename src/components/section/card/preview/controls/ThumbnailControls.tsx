@@ -1,5 +1,7 @@
 import './ThumbnailControls.css'
 
+import { classNames } from '../../../../../utils/Utils'
+
 import { Dispatch, SetStateAction, MouseEvent } from 'react'
 
 interface Props {
@@ -10,8 +12,6 @@ interface Props {
 
 export default function ThumbnailControls({ media, mediaIndex, setMediaIndex }: Props) {
     const thumbnails = media.map((fileName, index) => {
-        const className = `thumbnail ${index === mediaIndex && 'selected'}`
-
         const src = `assets/thumbnails/${fileName.split('.')[0]}.jpg`
 
         const onClick = (event: MouseEvent) => {
@@ -22,7 +22,7 @@ export default function ThumbnailControls({ media, mediaIndex, setMediaIndex }: 
 
         return <img
             key={index}
-            className={className}
+            className={classNames('thumbnail', index === mediaIndex && 'selected')}
             src={src}
             role='button'
             onClick={onClick}
