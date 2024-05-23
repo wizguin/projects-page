@@ -15,7 +15,6 @@ interface Props {
 }
 
 export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPlaying, setIsPlaying , isFullscreen, toggleFullscreen}: Props) {
-
     const isLargeView = isExpanded || isFullscreen
 
     const playState = isLargeView ? 'play-corner' : 'play-center'
@@ -67,5 +66,4 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
             {isLargeView && seekbar}
         </>
     )
-
 }

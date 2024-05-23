@@ -1,5 +1,7 @@
 import './MiniControls.css'
 
+import { classNames } from '../../../../../utils/Utils'
+
 import { Dispatch, SetStateAction, MouseEvent } from 'react'
 
 interface Props {
@@ -11,7 +13,6 @@ interface Props {
 }
 
 export default function MiniControls({ media, isVisible, isExpanded, setMediaIndex, setExpanded }: Props) {
-    const controlsVisible = isVisible ? '' : 'hidden'
     const navigationVisible = media.length > 1
     const expandIcon = isExpanded ? 'fa-compress' : 'fa-expand'
 
@@ -42,7 +43,7 @@ export default function MiniControls({ media, isVisible, isExpanded, setMediaInd
     }
 
     return (
-        <div className={`mini-controls fade ${controlsVisible}`}>
+        <div className={classNames('mini-controls fade', !isVisible && 'hidden')}>
             {navigationVisible && controlButton(prevMedia, 'fa-chevron-left')}
 
             {controlButton(toggleExpanded, expandIcon)}

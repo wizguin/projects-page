@@ -1,5 +1,7 @@
 import './Seekbar.css'
 
+import { classNames } from '../../../../../../utils/Utils'
+
 import { useState, useEffect, useRef, useCallback,
     MutableRefObject, Dispatch, SetStateAction, MouseEvent as ReactMouseEvent } from 'react'
 
@@ -16,8 +18,6 @@ export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: 
     const [wasPlaying, setWasPlaying] = useState(isPlaying)
 
     const seekbarRef = useRef<HTMLDivElement | null>(null)
-
-    const hideSeekbar = visible || isSeeking ? '' : 'hidden'
 
     const seek = useCallback((clientX: number) => {
         if (!seekbarRef.current) return
@@ -89,7 +89,7 @@ export default function Seekbar({ videoRef, visible, isPlaying, setIsPlaying }: 
 
     return (
         <div
-            className={`seekbar-container fade ${hideSeekbar}`}
+            className={classNames('seekbar-container fade', !isVisible && !isSeeking && 'hidden')}
             role='button'
             onMouseDown={onSeekbarDown}
             // Prevent click event on video container

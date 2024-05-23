@@ -1,12 +1,11 @@
 import './Preview.css'
 
-import MiniControls from './controls/MiniControls'
-import ThumbnailControls from './controls/ThumbnailControls'
-
+import { classNames } from '../../../../utils/Utils'
 import Image from './image/Image'
-import Video from './video/Video'
-
+import MiniControls from './controls/MiniControls'
 import { PreviewTypes, getType } from './types/PreviewTypes'
+import ThumbnailControls from './controls/ThumbnailControls'
+import Video from './video/Video'
 
 import { isMobile } from 'react-device-detect'
 import { useState, useEffect } from 'react'
@@ -93,7 +92,7 @@ export default function Preview({ media }: Props) {
         <div className='card-preview'>
 
             <span
-                className={`card-media ${isExpanded ? 'expanded fade-in' : ''}`}
+                className={classNames('card-media', isExpanded && 'expanded fade-in')}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
                 onMouseMove={onMouseEnter}
