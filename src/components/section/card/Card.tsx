@@ -1,6 +1,6 @@
-import './ProjectCard.css'
+import './Card.css'
 
-import ProjectPreview from './preview/ProjectPreview'
+import Preview from './preview/Preview'
 
 export interface Props {
     title: string,
@@ -11,7 +11,7 @@ export interface Props {
     media: string[]
 }
 
-export default function ProjectCard({ title, description, badges, demoUrl, sourceUrl, media }: Props) {
+export default function Card({ title, description, badges, demoUrl, sourceUrl, media }: Props) {
     const badgeElements = badges && badges.map(text => (
         <span key={text} className='badge'>{text}</span>
     ))
@@ -32,7 +32,7 @@ export default function ProjectCard({ title, description, badges, demoUrl, sourc
                 </div>
             </div>
 
-            <ProjectPreview media={media} />
+            <Preview media={media} />
 
         </div>
     )

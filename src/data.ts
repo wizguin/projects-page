@@ -1,8 +1,8 @@
-import { Props as Section } from './components/Section'
+import { Props as SectionProps } from './components/section/Section'
 
 interface Data {
     headerTitle: string,
-    sections: Section[]
+    sections: SectionProps[]
 }
 
 const data: Data = {
@@ -10,7 +10,7 @@ const data: Data = {
     sections: [
         {
             title: 'Projects',
-            projects: [
+            cards: [
                 {
                     title: 'Project',
                     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

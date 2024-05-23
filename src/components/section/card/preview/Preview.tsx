@@ -1,4 +1,4 @@
-import './ProjectPreview.css'
+import './Preview.css'
 
 import MiniControls from './controls/MiniControls'
 import ThumbnailControls from './controls/ThumbnailControls'
@@ -15,7 +15,7 @@ interface Props {
     media: string[]
 }
 
-export default function ProjectPreview({ media }: Props) {
+export default function Preview({ media }: Props) {
     const [isMouseOver, setIsMouseOver] = useState(false)
     const [isExpanded, setExpanded] = useState(false)
     const [mediaIndex, setMediaIndex] = useState(0)

@@ -1,23 +1,23 @@
 import './Section.css'
 
-import ProjectCard from './card/ProjectCard'
+import Card from './card/Card'
 
-import { Props as Project } from './card/ProjectCard'
+import { Props as CardProps } from './card/Card'
 
 export interface Props {
     title: string,
-    projects: Project[]
+    cards: CardProps[]
 }
 
-export default function Section({ title, projects }: Props) {
-    const projectComponents = projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
+export default function Section({ title, cards }: Props) {
+    const cardComponents = cards.map((card, index) => (
+        <Card key={index} {...card} />
     ))
 
     return (
         <section className='cards'>
             <h2>{title}</h2>
-            {projectComponents}
+            {cardComponents}
         </section>
     )
 }
