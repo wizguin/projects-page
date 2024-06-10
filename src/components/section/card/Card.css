@@ -17,8 +17,10 @@
     padding: 2.5rem;
 }
 
-.card-badges {
+.card-badges,
+.card-buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.4rem;
 }
 
@@ -39,11 +41,6 @@
 .card img,
 .card video {
     border-radius: 1rem;
-}
-
-.card-buttons {
-    display: flex;
-    gap: 0.4rem;
 }
 
 @media (min-width: 600px) {
