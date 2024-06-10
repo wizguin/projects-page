@@ -13,15 +13,16 @@
 }
 
 .play-corner {
-    left: 2rem;
+    left: 1.5rem;
 }
 
 .fullscreen-button {
-    right: 2rem;
+    right: 1.5rem;
 }
 
 .play-corner,
 .fullscreen-button {
-    bottom: 40px;
+    bottom: 35px;
+    padding: 0.5rem;
     font-size: 20px;
 }
