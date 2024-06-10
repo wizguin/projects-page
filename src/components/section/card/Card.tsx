@@ -32,7 +32,7 @@ export default function Card({ title, description, badges, demoUrl, sourceUrl, m
                 </div>
             </div>
 
-            <Preview media={media} />
+            {media.length > 0 && <Preview media={media} />}
 
         </div>
     )
