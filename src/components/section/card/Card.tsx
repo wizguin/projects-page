@@ -27,7 +27,7 @@ export default function Card({ title, description, badges, demoUrl, sourceUrl, m
                 <p className='card-text'>{description}</p>
 
                 <div className='card-buttons'>
-                    {demoUrl && <a className='button' href={demoUrl} role='button'>Demo</a>}
+                    {demoUrl && <a className='button' href={demoUrl} target='_blank' role='button'>Demo</a>}
                     {sourceUrl && <a className='button button-secondary' href={sourceUrl} role='button'>Source Code</a>}
                 </div>
             </div>
