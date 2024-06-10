@@ -2,6 +2,7 @@
     position: relative;
     padding: 0.4rem;
     aspect-ratio: 16 / 10;
+    user-select: none;
 }
 
 .card-media img,
