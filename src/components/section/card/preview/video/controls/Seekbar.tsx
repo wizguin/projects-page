@@ -31,6 +31,7 @@ export default function Seekbar({ videoRef, isVisible, isPlaying, setIsPlaying }
         }
     }, [videoRef])
 
+    // Update progress every 20ms
     useEffect(() => {
         function updateProgress() {
             if (videoRef.current) {
@@ -45,6 +46,7 @@ export default function Seekbar({ videoRef, isVisible, isPlaying, setIsPlaying }
         }
     }, [videoRef])
 
+    // Mouse events
     useEffect(() => {
         function addEvents() {
             window.addEventListener('mousemove', onMouseMove)

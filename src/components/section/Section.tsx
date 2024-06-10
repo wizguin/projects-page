@@ -1,7 +1,6 @@
 import './Section.css'
 
 import Card from './card/Card'
-
 import { Props as CardProps } from './card/Card'
 
 export interface Props {
