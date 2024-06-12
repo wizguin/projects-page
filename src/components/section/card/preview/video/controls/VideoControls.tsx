@@ -1,5 +1,6 @@
 import './VideoControls.css'
 
+import { classNames } from '../../../../../../utils/Utils'
 import Seekbar from './Seekbar'
 
 import { MutableRefObject, Dispatch, SetStateAction, MouseEvent } from 'react'
@@ -50,10 +51,10 @@ export default function VideoControls({ videoRef, isExpanded, isMouseOver, isPla
         toggleFullscreen()
     }
 
-    function controlButton(onClick: (event: MouseEvent) => void, ...classNames: string[]) {
+    function controlButton(onClick: (event: MouseEvent) => void, ...classes: string[]) {
         return (
             <i
-                className={`${classNames.join(' ')} fa-solid fade`}
+                className={classNames('fa-solid fade', ...classes)}
                 role='button'
                 onClick={onClick}
             ></i>
