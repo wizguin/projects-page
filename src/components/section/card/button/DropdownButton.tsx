@@ -17,7 +17,14 @@ export default function DropdownButton({ label, options }: Props) {
     const buttonRef = useRef<HTMLAnchorElement | null>(null)
 
     const dropdownMenu = (
-        <div className={classNames('dropdown-menu fade-in', !isOpen && 'display-none')}>
+        <div
+            className={
+                classNames('dropdown-menu fade-in', !isOpen && 'display-none')
+            }
+            style={{
+                minWidth: buttonRef.current ? buttonRef.current.clientWidth : 0
+            }}
+        >
             {options.map(option => dropdownItem(option))}
         </div>
     )
