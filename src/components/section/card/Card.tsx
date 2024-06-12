@@ -1,5 +1,7 @@
 import './Card.css'
 
+import DropdownButton from './button/DropdownButton'
+import { Props as DropdownButtonProps } from './button/DropdownButton'
 import Preview from './preview/Preview'
 
 export interface Props {
@@ -7,7 +9,7 @@ export interface Props {
     description: string,
     badges?: string[],
     demoUrl?: string,
-    sourceUrl?: string,
+    sourceUrl?: string | DropdownButtonProps['options'],
     media: string[]
 }
 
@@ -15,6 +17,28 @@ export default function Card({ title, description, badges, demoUrl, sourceUrl, m
     const badgeElements = badges && badges.map(text => (
         <span key={text} className='badge'>{text}</span>
     ))
+
+    const demoText = 'Demo'
+    const sourceText = 'Source Code'
+
+    const sourceButton = Array.isArray(sourceUrl)
+        // Dropdown
+        ? <DropdownButton label={sourceText} options={sourceUrl} />
+        // Default button
+        : button(sourceText, sourceUrl || '', 'button-secondary')
+
+    function button(label: string, href: string, ...classNames: string[]) {
+        return (
+            <a
+                className={`button ${classNames.join(' ')}`}
+                href={href}
+                target='_blank'
+                role='button'
+            >
+                {label}
+            </a>
+        )
+    }
 
     return (
         <div className='card'>
@@ -27,8 +51,8 @@ export default function Card({ title, description, badges, demoUrl, sourceUrl, m
                 <p className='card-text'>{description}</p>
 
                 <div className='card-buttons'>
-                    {demoUrl && <a className='button' href={demoUrl} target='_blank' role='button'>Demo</a>}
-                    {sourceUrl && <a className='button button-secondary' href={sourceUrl} role='button'>Source Code</a>}
+                    {demoUrl && button(demoText, demoUrl)}
+                    {sourceUrl && sourceButton}
                 </div>
             </div>
 
