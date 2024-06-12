@@ -1,0 +1,27 @@
+.dropdown-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.2rem;
+    z-index: 10;
+}
+
+.dropdown-menu .button {
+    background: #000000aa;
+}
+
+.dropdown-menu .button:hover {
+    background: #000000dd;
+}
+
+.dropdown-menu .button:first-child {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.dropdown-menu .button:last-child {
+    border-radius: 0 0 1rem 1rem;
+}
+
+.dropdown-menu .button:only-child {
+    border-radius: 1rem;
+}
