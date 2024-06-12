@@ -5,7 +5,7 @@
     user-select: none;
 }
 
-.card-media img,
+.card-media > img,
 .card-media video {
     display: block;
     width: 100%;
@@ -35,13 +35,13 @@
     z-index: 10;
 }
 
-.card-media.expanded img,
+.card-media.expanded > img,
 .card-media.expanded .video-container {
     width: auto;
     height: auto;
     margin: auto;
     max-width: 100%;
-    max-height: 80%;
+    overflow: hidden;
 }
 
 .card-media.expanded .video-container {
