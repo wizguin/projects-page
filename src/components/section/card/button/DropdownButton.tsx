@@ -67,11 +67,13 @@ export default function DropdownButton({ label, options }: Props) {
         <div>
             <a
                 ref={buttonRef}
-                className='button button-secondary'
+                className='dropdown-button button button-secondary'
                 role='button'
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {label}
+
+                <i className='dropdown-chevron fa-solid fa-chevron-down'></i>
             </a>
 
             {dropdownMenu}

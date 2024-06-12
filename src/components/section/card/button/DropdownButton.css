@@ -1,3 +1,13 @@
+.dropdown-button {
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropdown-chevron {
+    padding-left: 0.3rem;
+    font-size: 0.5rem;
+}
+
 .dropdown-menu {
     position: absolute;
     display: flex;
