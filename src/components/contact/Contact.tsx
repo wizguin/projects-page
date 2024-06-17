@@ -22,6 +22,8 @@ export default function Contact() {
     return (
         <div className='contact'>
 
+            <h2>Contact</h2>
+
             <form className='contact-form' onSubmit={onSubmit}>
                 <input
                     type='text'
