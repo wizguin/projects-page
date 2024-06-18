@@ -34,6 +34,7 @@
 body {
     margin: 0;
     font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem;
     color: var(--font-color);
     background-color: var(--background-color);
 }
@@ -68,6 +69,7 @@ button {
     border: none;
 }
 
+button,
 [role=button] {
     cursor: pointer;
     user-select: none;
