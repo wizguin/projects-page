@@ -12,9 +12,14 @@ export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
                 <div className='header-title'>
                     <h1>{headerTitle}</h1>
 
-                    <a href={githubUrl}>
-                        <i className='fa-brands fa-github'></i>
-                    </a>
+                    <div className='header-links'>
+
+                        <a className='header-link' href={githubUrl}>
+                            <i className='fa-brands fa-github'></i>
+                            <span className='tooltip fade'>GitHub</span>
+                        </a>
+
+                    </div>
                 </div>
             </header>
 
