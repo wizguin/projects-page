@@ -19,6 +19,11 @@ export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
                             <span className='tooltip fade'>GitHub</span>
                         </a>
 
+                        <div className='header-link' role='button'>
+                            <i className='fa-solid fa-envelope'></i>
+                            <span className='tooltip fade'>Contact</span>
+                        </div>
+
                     </div>
                 </div>
             </header>
