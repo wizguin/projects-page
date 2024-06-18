@@ -32,6 +32,7 @@ export default function DropdownButton({ label, options }: Props) {
     function dropdownItem(option: Option) {
         return (
             <a
+                key={option.label}
                 className='button'
                 href={option.url}
                 target='_blank'
