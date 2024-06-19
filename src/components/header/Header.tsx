@@ -20,7 +20,7 @@ export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
 
                     <div className='header-links'>
 
-                        <a className='header-link' href={githubUrl}>
+                        <a className='header-link' href={githubUrl} target='_blank'>
                             <i className='fa-brands fa-github'></i>
                             <span className='tooltip fade'>GitHub</span>
                         </a>
