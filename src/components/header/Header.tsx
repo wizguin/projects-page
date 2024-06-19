@@ -1,11 +1,17 @@
 import './Header.css'
 
+import Contact from '../contact/Contact'
+
+import { useState } from 'react'
+
 interface Props {
     headerTitle: string,
     githubUrl?: string
 }
 
 export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
+    const [isContactVisible, setIsContactVisible] = useState(false)
+
     return (
         <>
             <header>
@@ -19,7 +25,7 @@ export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
                             <span className='tooltip fade'>GitHub</span>
                         </a>
 
-                        <div className='header-link' role='button'>
+                        <div className='header-link' role='button' onClick={() => setIsContactVisible(true)}>
                             <i className='fa-solid fa-envelope'></i>
                             <span className='tooltip fade'>Contact</span>
                         </div>
@@ -29,6 +35,8 @@ export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
             </header>
 
             <div className='header-gradient'></div>
+
+            {isContactVisible && <Contact onBgClick={() => setIsContactVisible(false)} />}
         </>
     )
 }

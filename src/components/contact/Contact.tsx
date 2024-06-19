@@ -2,7 +2,10 @@ import './Contact.css'
 
 import { ChangeEvent, FormEvent, useState } from 'react'
 
-export default function Contact() {
+interface Props {
+    onBgClick: () => void
+}
+
     const [formData, setFormData] = useState({
         email: '',
         message: ''
@@ -20,7 +23,9 @@ export default function Contact() {
     }
 
     return (
-        <div className='contact'>
+        <div className='contact fade-in'>
+
+            <div className='expanded-bg' onClick={onBgClick}></div>
 
             <h2>Contact</h2>
 
