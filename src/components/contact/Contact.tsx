@@ -19,8 +19,23 @@ export default function Contact({ setIsContactVisible }: Props) {
         }))
     }
 
-    function onSubmit(event: FormEvent) {
+    async function onSubmit(event: FormEvent) {
         event.preventDefault()
+
+        const body = new FormData()
+
+        body.append('email', formData.email)
+        body.append('message', formData.message)
+        body.append('access_key', 'key')
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: body
+        })
+
+        const data = await response.json()
+
+        console.log(data)
     }
 
     return (
