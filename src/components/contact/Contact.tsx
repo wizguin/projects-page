@@ -12,6 +12,8 @@ export default function Contact({ setIsContactVisible }: Props) {
         message: ''
     })
 
+    const [isLoading, setIsLoading] = useState(false)
+
     function onChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setFormData(prev => ({
             ...prev,
@@ -19,8 +21,10 @@ export default function Contact({ setIsContactVisible }: Props) {
         }))
     }
 
-    async function onSubmit(event: FormEvent) {
+    function onSubmit(event: FormEvent) {
         event.preventDefault()
+
+        setIsLoading(true)
 
         const body = new FormData()
 
@@ -28,15 +32,26 @@ export default function Contact({ setIsContactVisible }: Props) {
         body.append('message', formData.message)
         body.append('access_key', 'key')
 
-        const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: body
-        })
-
-        const data = await response.json()
-
-        console.log(data)
+        submitForm(body)
     }
+
+    async function submitForm(body: FormData) {
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: body
+            })
+
+            const data = await response.json()
+
+            setIsLoading(false)
+            console.log(data)
+
+        } catch (error) {
+            setIsLoading(false)
+        }
+    }
+    const spinner = <span className='spinner'></span>
 
     return (
         <div className='contact fade-in'>
@@ -65,7 +80,9 @@ export default function Contact({ setIsContactVisible }: Props) {
                     maxLength={1000}
                 />
 
-                <button className='button' type='submit'>Submit</button>
+                <button className='button' type='submit'>
+                    {isLoading ? spinner : 'Submit'}
+                </button>
             </form>
 
         </div>
