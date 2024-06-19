@@ -32,11 +32,13 @@ export default function Contact({ setIsContactVisible }: Props) {
 
             <form className='contact-form' onSubmit={onSubmit}>
                 <input
-                    type='text'
                     placeholder='Email Address'
                     onChange={onChange}
                     name='email'
                     value={formData.email}
+                    type='email'
+                    required={true}
+                    maxLength={320}
                 />
 
                 <textarea
@@ -44,6 +46,8 @@ export default function Contact({ setIsContactVisible }: Props) {
                     onChange={onChange}
                     name='message'
                     value={formData.message}
+                    required={true}
+                    maxLength={1000}
                 />
 
                 <button className='button' type='submit'>Submit</button>
