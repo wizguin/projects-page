@@ -113,6 +113,16 @@ button,
     animation: fadeIn 0.4s;
 }
 
+.lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000095;
+    z-index: -1;
+}
+
 @media (min-width: 1200px) {
     h1 {
         font-size: 2.5rem;

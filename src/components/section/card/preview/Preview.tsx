@@ -50,7 +50,7 @@ export default function Preview({ media }: Props) {
         setMediaIndex={setMediaIndex}
     />
 
-    const background = <div className='expanded-bg' onClick={() => setExpanded(false)}></div>
+    const background = <div className='lightbox' onClick={() => setExpanded(false)}></div>
 
     useEffect(() => {
         if (!isExpanded) {

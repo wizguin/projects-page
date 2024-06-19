@@ -36,7 +36,7 @@ export default function Header({ headerTitle, githubUrl = 'github' }: Props) {
 
             <div className='header-gradient'></div>
 
-            {isContactVisible && <Contact onBgClick={() => setIsContactVisible(false)} />}
+            {isContactVisible && <Contact setIsContactVisible={setIsContactVisible} />}
         </>
     )
 }

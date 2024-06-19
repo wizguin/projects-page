@@ -1,11 +1,12 @@
 import './Contact.css'
 
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react'
 
 interface Props {
-    onBgClick: () => void
+    setIsContactVisible: Dispatch<SetStateAction<boolean>>
 }
 
+export default function Contact({ setIsContactVisible }: Props) {
     const [formData, setFormData] = useState({
         email: '',
         message: ''
@@ -25,7 +26,7 @@ interface Props {
     return (
         <div className='contact fade-in'>
 
-            <div className='expanded-bg' onClick={onBgClick}></div>
+            <div className='lightbox' onClick={() => setIsContactVisible(false)}></div>
 
             <h2>Contact</h2>
 
