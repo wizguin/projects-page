@@ -1,5 +1,6 @@
 .mini-controls {
     z-index: 1;
+    border-radius: 1rem;
 }
 
 .mini-controls .button {
