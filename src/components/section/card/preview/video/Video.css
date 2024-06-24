@@ -8,6 +8,9 @@
     height: 100%;
     max-width: 100%;
     margin: auto;
+    /* Fix 1px border sometimes showing in Chrome bug
+    https://stackoverflow.com/questions/40432274/html5-video-element-1px-white-bottom-border-on-chrome */
+    clip-path: fill-box;
 }
 
 .video-container video:focus {
