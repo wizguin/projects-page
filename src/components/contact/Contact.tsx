@@ -42,15 +42,24 @@ export default function Contact({ setIsContactVisible }: Props) {
                 body: body
             })
 
-            const data = await response.json()
+            const json = await response.json()
 
             setIsLoading(false)
-            console.log(data)
+            handleResponse(json)
 
         } catch (error) {
             setIsLoading(false)
         }
     }
+
+    function handleResponse(response: { [key: string ]: string | boolean }) {
+        if (response.success) {
+            setIsContactVisible(false)
+        } else {
+            // todo
+        }
+    }
+
     const spinner = <span className='spinner'></span>
 
     return (
