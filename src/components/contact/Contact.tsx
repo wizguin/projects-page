@@ -6,6 +6,11 @@ interface Props {
     setIsContactVisible: Dispatch<SetStateAction<boolean>>
 }
 
+interface Response {
+    message: string,
+    success: boolean
+}
+
 export default function Contact({ setIsContactVisible }: Props) {
     const [formData, setFormData] = useState({
         email: '',
@@ -42,7 +47,7 @@ export default function Contact({ setIsContactVisible }: Props) {
                 body: body
             })
 
-            const json = await response.json()
+            const json = await response.json() as Response
 
             setIsLoading(false)
             handleResponse(json)
@@ -52,7 +57,7 @@ export default function Contact({ setIsContactVisible }: Props) {
         }
     }
 
-    function handleResponse(response: { [key: string ]: string | boolean }) {
+    function handleResponse(response: Response) {
         if (response.success) {
             setIsContactVisible(false)
         } else {
