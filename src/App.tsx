@@ -2,6 +2,7 @@ import './App.css'
 
 import data from './data'
 import Header from './components/header/Header'
+import Notifications from './components/notifications/Notifications'
 import Section from './components/section/Section'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
     return (
         <>
+            <Notifications />
             <Header headerTitle={data.headerTitle} />
             {sections}
         </>
