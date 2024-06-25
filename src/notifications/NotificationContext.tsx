@@ -9,16 +9,26 @@ interface Notification {
 }
 
 interface NotificationContextArgs {
-    notifications: Notification[]
+    notifications: Notification[],
+    add: (notification: Notification) => void,
+    remove: (notification: Notification) => void
 }
 
 const NotificationContext = createContext<NotificationContextArgs | undefined>(undefined)
 
 export function NotificationProvider({ children }: Props) {
-    const [notifications, setNotifications] = useState<Notification[]>([{ message: 'test notification' }])
+    const [notifications, setNotifications] = useState<Notification[]>([])
+
+    function add(notification: Notification) {
+        setNotifications(prev => [...prev, notification])
+    }
+
+    function remove(notification: Notification) {
+        setNotifications(prev => prev.filter(n => n === notification))
+    }
 
     return (
-        <NotificationContext.Provider value={{ notifications }}>
+        <NotificationContext.Provider value={{ notifications, add, remove }}>
             {children}
         </NotificationContext.Provider>
     )
