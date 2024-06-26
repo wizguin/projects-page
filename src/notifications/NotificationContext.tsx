@@ -4,7 +4,7 @@ interface Props {
     children: ReactNode
 }
 
-interface Notification {
+export interface Notification {
     message: string,
     type: NotificationType
 }
