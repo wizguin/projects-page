@@ -1,9 +1,18 @@
 import './Notification.css'
 
 import { Notification as Props } from '../../../notifications/NotificationContext'
+import { useNotifications } from '../../../notifications/NotificationContext'
 
-export default function Notification({ message, type }: Props)  {
+export default function Notification({ id, message, type }: Props)  {
+    const { remove } = useNotifications()
+
     return (
-        <h1>{message}{type}</h1>
+        <div
+            className='notification'
+            role='button'
+            onClick={() => remove(id)}
+        >
+            {message}{type}
+        </div>
     )
 }

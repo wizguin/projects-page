@@ -6,11 +6,15 @@ import { useNotifications } from '../../notifications/NotificationContext'
 export default function Notifications() {
     const { notifications, addSuccess } = useNotifications()
 
-    window.onclick = () => addSuccess('test')
+    window.onkeyup = () => addSuccess('test')
+
+    const notificationComponents = notifications.map((notification) => (
+        <Notification key={notification.id} {...notification} />
+    ))
 
     return (
         <div className='notifications'>
-            {notifications.map(n => Notification(n))}
+            {notificationComponents}
         </div>
     )
 }
