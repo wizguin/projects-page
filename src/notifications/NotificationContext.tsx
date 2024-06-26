@@ -5,13 +5,19 @@ interface Props {
 }
 
 interface Notification {
-    message: string
+    message: string,
+    type: NotificationType
+}
+
+enum NotificationType {
+    Success,
+    Error
 }
 
 interface NotificationContextArgs {
     notifications: Notification[],
-    add: (notification: Notification) => void,
-    remove: (notification: Notification) => void
+    addSuccess: (message: string) => void,
+    addError: (message: string) => void
 }
 
 const NotificationContext = createContext<NotificationContextArgs | undefined>(undefined)
@@ -19,8 +25,16 @@ const NotificationContext = createContext<NotificationContextArgs | undefined>(u
 export function NotificationProvider({ children }: Props) {
     const [notifications, setNotifications] = useState<Notification[]>([])
 
-    function add(notification: Notification) {
-        setNotifications(prev => [...prev, notification])
+    function addSuccess(message: string) {
+        add(message, NotificationType.Success)
+    }
+
+    function addError(message: string) {
+        add(message, NotificationType.Error)
+    }
+
+    function add(message: string, type: NotificationType) {
+        setNotifications(prev => [...prev, { message, type }])
     }
 
     function remove(notification: Notification) {
@@ -28,7 +42,7 @@ export function NotificationProvider({ children }: Props) {
     }
 
     return (
-        <NotificationContext.Provider value={{ notifications, add, remove }}>
+        <NotificationContext.Provider value={{ notifications, addSuccess, addError }}>
             {children}
         </NotificationContext.Provider>
     )
