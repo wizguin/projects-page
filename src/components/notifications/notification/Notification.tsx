@@ -8,7 +8,7 @@ export default function Notification({ id, message, type }: Props)  {
 
     return (
         <div
-            className='notification'
+            className='notification fade-in'
             role='button'
             onClick={() => remove(id)}
         >
