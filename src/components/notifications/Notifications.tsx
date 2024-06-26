@@ -1,3 +1,5 @@
+import './Notifications.css'
+
 import Notification from './notification/Notification'
 import { useNotifications } from '../../notifications/NotificationContext'
 

@@ -1,0 +1,11 @@
+.notification {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #badbcc;
+    background: #d1e7dd;
+    color: #0f5132;
+    word-wrap: break-word;
+    user-select: none;
+}

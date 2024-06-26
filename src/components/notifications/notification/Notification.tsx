@@ -1,3 +1,5 @@
+import './Notification.css'
+
 import { Notification as Props } from '../../../notifications/NotificationContext'
 
 export default function Notification({ message, type }: Props)  {
