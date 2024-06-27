@@ -23,7 +23,7 @@ export default function Notification({ id, message, type }: Props)  {
             role='button'
             onClick={() => remove(id)}
         >
-            {message}{type}
+            {message}
         </div>
     )
 }
