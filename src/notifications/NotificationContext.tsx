@@ -25,6 +25,7 @@ interface NotificationContextArgs {
 const NotificationContext = createContext<NotificationContextArgs | undefined>(undefined)
 
 const maxNotifications = 10
+const notificationTimeout = 5000
 
 export function NotificationProvider({ children }: Props) {
     const [notifications, setNotifications] = useState<Notification[]>([])
@@ -46,6 +47,8 @@ export function NotificationProvider({ children }: Props) {
         setNotifications(prev => (
             [{ id, message, type }, ...prev].slice(0, maxNotifications)
         ))
+
+        setTimeout(() => remove(id), notificationTimeout)
     }
 
     function remove(id: number) {
