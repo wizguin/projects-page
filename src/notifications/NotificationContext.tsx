@@ -29,7 +29,7 @@ const notificationTimeout = 5000
 
 export function NotificationProvider({ children }: Props) {
     const [notifications, setNotifications] = useState<Notification[]>([])
-    const [notificationId, setNotificationId] = useState(1)
+    const [, setNotificationId] = useState(1)
 
     function addSuccess(message: string) {
         add(message, NotificationType.Success)
