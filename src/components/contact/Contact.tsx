@@ -1,5 +1,7 @@
 import './Contact.css'
 
+import { useNotifications } from '../../notifications/NotificationContext'
+
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react'
 
 interface Props {
@@ -18,6 +20,8 @@ export default function Contact({ setIsContactVisible }: Props) {
     })
 
     const [isLoading, setIsLoading] = useState(false)
+
+    const { addSuccess, addError } = useNotifications()
 
     function onChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setFormData(prev => ({
@@ -53,15 +57,20 @@ export default function Contact({ setIsContactVisible }: Props) {
             handleResponse(json)
 
         } catch (error) {
+            if (error instanceof Error) {
+                addError(error.message)
+            }
+
             setIsLoading(false)
         }
     }
 
     function handleResponse(response: Response) {
         if (response.success) {
+            addSuccess(response.message)
             setIsContactVisible(false)
         } else {
-            // todo
+            addError(response.message)
         }
     }
 
