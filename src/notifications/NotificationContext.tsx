@@ -24,6 +24,8 @@ interface NotificationContextArgs {
 
 const NotificationContext = createContext<NotificationContextArgs | undefined>(undefined)
 
+const maxNotifications = 10
+
 export function NotificationProvider({ children }: Props) {
     const [notifications, setNotifications] = useState<Notification[]>([])
     const [notificationId, setNotificationId] = useState(1)
@@ -40,7 +42,10 @@ export function NotificationProvider({ children }: Props) {
         const id = notificationId
 
         setNotificationId(prev => prev + 1)
-        setNotifications(prev => [{ id, message, type }, ...prev])
+
+        setNotifications(prev => (
+            [{ id, message, type }, ...prev].slice(0, maxNotifications)
+        ))
     }
 
     function remove(id: number) {
