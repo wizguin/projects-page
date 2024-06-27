@@ -40,15 +40,18 @@ export function NotificationProvider({ children }: Props) {
     }
 
     function add(message: string, type: NotificationType) {
-        const id = notificationId
+        // Unique ID for each notification
+        setNotificationId(prevId => {
+            const id = prevId
 
-        setNotificationId(prev => prev + 1)
+            setNotifications(prev => (
+                [{ id, message, type }, ...prev].slice(0, maxNotifications)
+            ))
 
-        setNotifications(prev => (
-            [{ id, message, type }, ...prev].slice(0, maxNotifications)
-        ))
+            setTimeout(() => remove(id), notificationTimeout)
 
-        setTimeout(() => remove(id), notificationTimeout)
+            return id + 1
+        })
     }
 
     function remove(id: number) {
