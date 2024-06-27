@@ -40,7 +40,7 @@ export function NotificationProvider({ children }: Props) {
         const id = notificationId
 
         setNotificationId(prev => prev + 1)
-        setNotifications(prev => [...prev, { id, message, type }])
+        setNotifications(prev => [{ id, message, type }, ...prev])
     }
 
     function remove(id: number) {
