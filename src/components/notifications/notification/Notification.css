@@ -1,12 +1,42 @@
 .notification {
+    position: relative;
     width: 100%;
     max-width: 500px;
     padding: 1rem;
     border-radius: 1rem;
-    pointer-events: auto;
-    border: 1px solid #badbcc;
-    background: #d1e7dd;
-    color: #0f5132;
     word-wrap: break-word;
     user-select: none;
+    pointer-events: auto;
+    color: var(--font-secondary-color);
+    transition: background 0.2s;
+}
+
+.notification.success {
+    background: #228822
+}
+
+.notification.success:hover {
+    background: #226622;
+}
+
+.notification.error {
+    background: #882222
+}
+
+.notification.error:hover {
+    background: #662222
+}
+
+.notification::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);
+    z-index: -1;
 }
