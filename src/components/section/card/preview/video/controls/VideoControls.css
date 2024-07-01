@@ -2,7 +2,7 @@
 .fullscreen-button {
     position: absolute;
     color: var(--video-btn);
-    text-shadow: 1px 1px 20px rgb(30, 30, 30);
+    text-shadow: 1px 1px 20px var(--video-btn-shadow);
     z-index: 2;
 }
 

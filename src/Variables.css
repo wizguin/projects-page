@@ -3,6 +3,7 @@
     --bg: #f8f9fa;
     --header-gradient: #d3d3d3;
     --lightbox-bg: #00000095;
+    --box-shadow: #00000080;
 
     --font: #212529;
     --font-secondary: #fff;
@@ -21,12 +22,14 @@
 
     --video-bg: #000;
     --video-btn: #fff;
+    --video-btn-shadow: #1e1e1e;
     --video-seek: #fff;
     --video-seek-bg: #ffffff33;
 
     --form-bg: #fff;
     --form-font: #000;
     --form-scroll: #888;
+    --form-focus-shadow: #ffffff80;
 
     --error: #882222;
     --error-dark: #661919;
