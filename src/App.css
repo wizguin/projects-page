@@ -4,9 +4,9 @@
     --font-secondary-color: #fff;
     --background-color: #f8f9fa;
     --btn-color: #007af1;
-    --btn-hover-color: #0063c7;
+    --btn-dark-color:#005bb5;
     --btn-secondary-color: #6a757c;
-    --btn-secondary-hover-color: #576066;
+    --btn-secondary-dark-color: #4f585d;
     --gradient-start-color: #efefef;
     --gradient-end-color: #f0f0f0;
     --shadow-start-color: #e7e7e7;
@@ -94,11 +94,11 @@ button,
 }
 
 .button:hover {
-    background-color: var(--btn-hover-color);
+    background-color: var(--btn-dark-color);
 }
 
 .button-secondary:hover {
-    background-color: var(--btn-secondary-hover-color);
+    background-color: var(--btn-secondary-dark-color);
 }
 
 .hidden {
