@@ -7,24 +7,24 @@
     word-wrap: break-word;
     user-select: none;
     pointer-events: auto;
-    color: var(--font-secondary-color);
+    color: var(--font-secondary);
     transition: background 0.2s;
 }
 
 .notification.success {
-    background: var(--success-color);
+    background: var(--success);
 }
 
 .notification.success:hover {
-    background: var(--success-dark-color);
+    background: var(--success-dark);
 }
 
 .notification.error {
-    background: var(--error-color);
+    background: var(--error);
 }
 
 .notification.error:hover {
-    background: var(--error-dark-color);
+    background: var(--error-dark);
 }
 
 .notification::before {

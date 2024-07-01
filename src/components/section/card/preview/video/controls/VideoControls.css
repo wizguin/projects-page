@@ -1,7 +1,7 @@
 .play-button,
 .fullscreen-button {
     position: absolute;
-    color: #fff;
+    color: var(--video-btn);
     text-shadow: 1px 1px 20px rgb(30, 30, 30);
     z-index: 2;
 }

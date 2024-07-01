@@ -39,8 +39,8 @@
 .contact-form textarea {
     border: 1px solid transparent;
     border-radius: 1rem;
-    background: #fff;
-    color: #000;
+    background: var(--form-bg);
+    color: var(--form-font);
     outline: 0;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .contact-form textarea::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--form-scroll);
     border-radius: 1rem;
     cursor: default;
 }

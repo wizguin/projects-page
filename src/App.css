@@ -1,35 +1,3 @@
-:root {
-    color-scheme: light;
-    --font-color: #212529;
-    --font-secondary-color: #fff;
-    --background-color: #f8f9fa;
-    --btn-color: #007af1;
-    --btn-dark-color:#005bb5;
-    --btn-secondary-color: #6a757c;
-    --btn-secondary-dark-color: #4f585d;
-    --gradient-start-color: #efefef;
-    --gradient-end-color: #f0f0f0;
-    --shadow-start-color: #e7e7e7;
-    --shadow-end-color: #c7c7c7;
-    --header-gradient-color: #d3d3d3;
-    --success-color: #228822;
-    --success-dark-color: #196619;
-    --error-color: #882222;
-    --error-dark-color: #661919;
-}
-
-[data-theme="dark"] {
-    color-scheme: dark;
-    --font-color: #dee2e6;
-    --font-secondary-color: #fff;
-    --background-color: #212529;
-    --gradient-start-color: #1e2125;
-    --gradient-end-color: #23282c;
-    --shadow-start-color: #292e33;
-    --shadow-end-color: #191c1f;
-    --header-gradient-color: #6a757c;
-}
-
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent !important;
@@ -39,8 +7,8 @@ body {
     margin: 0;
     font-family: "Montserrat", sans-serif !important;
     font-size: 1rem;
-    color: var(--font-color);
-    background-color: var(--background-color);
+    color: var(--font);
+    background: var(--bg);
 }
 
 h1 {
@@ -62,14 +30,14 @@ h1, h2, h3 {
 
 a {
     text-decoration: none;
-    color: var(--font-color);
+    color: var(--font);
 }
 
 button {
     margin: 0;
     padding: 0;
     border-radius: 0;
-    background-color: transparent;
+    background: transparent;
     border: none;
 }
 
@@ -83,22 +51,22 @@ button,
     display: inline-block;
     padding: 0.6rem 0.9rem;
     border-radius: 1rem;
-    background-color: var(--btn-color);
-    color: var(--font-secondary-color);
+    background: var(--btn);
+    color: var(--font-secondary);
     transition: background 0.2s ease !important;
     white-space: nowrap;
 }
 
 .button-secondary {
-    background-color: var(--btn-secondary-color);
+    background: var(--btn-secondary);
 }
 
 .button:hover {
-    background-color: var(--btn-dark-color);
+    background: var(--btn-dark);
 }
 
 .button-secondary:hover {
-    background-color: var(--btn-secondary-dark-color);
+    background: var(--btn-secondary-dark);
 }
 
 .hidden {
@@ -123,7 +91,7 @@ button,
     left: 0;
     width: 100%;
     height: 100%;
-    background: #00000095;
+    background: var(--lightbox-bg);
     z-index: -1;
 }
 

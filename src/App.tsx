@@ -1,4 +1,5 @@
 import './App.css'
+import './Variables.css'
 
 import data from './data'
 import Header from './components/header/Header'

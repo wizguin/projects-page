@@ -18,7 +18,7 @@
 }
 
 .video-container:fullscreen {
-    background: #000;
+    background: var(--video-bg);
     border-radius: 0;
 }
 

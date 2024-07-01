@@ -17,11 +17,11 @@
 }
 
 .dropdown-menu .button {
-    background: #000000aa;
+    background: var(--btn-black);
 }
 
 .dropdown-menu .button:hover {
-    background: #000000dd;
+    background: var(--btn-black-dark);
 }
 
 .dropdown-menu .button:first-child {

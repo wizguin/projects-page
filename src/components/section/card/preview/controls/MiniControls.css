@@ -5,11 +5,11 @@
 
 .mini-controls .button {
     border-radius: 0;
-    background: #000000aa;
+    background: var(--btn-black);
 }
 
 .mini-controls .button:hover {
-    background: #000000dd;
+    background: var(--btn-black-dark);
 }
 
 .mini-controls .button:first-child {

@@ -1,0 +1,48 @@
+:root {
+    color-scheme: light;
+    --bg: #f8f9fa;
+    --header-gradient: #d3d3d3;
+    --lightbox-bg: #00000095;
+
+    --font: #212529;
+    --font-secondary: #fff;
+
+    --btn: #007af1;
+    --btn-dark:#005bb5;
+    --btn-secondary: #6a757c;
+    --btn-secondary-dark: #4f585d;
+    --btn-black: #000000aa;
+    --btn-black-dark: #000000e6;
+
+    --card-gradient-start: #efefef;
+    --card-gradient-end: #f0f0f0;
+    --card-shadow-start: #e7e7e7;
+    --card-shadow-end: #c7c7c7;
+
+    --video-bg: #000;
+    --video-btn: #fff;
+    --video-seek: #fff;
+    --video-seek-bg: #ffffff33;
+
+    --form-bg: #fff;
+    --form-font: #000;
+    --form-scroll: #888;
+
+    --error: #882222;
+    --error-dark: #661919;
+    --success: #228822;
+    --success-dark: #196619;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #212529;
+    --header-gradient: #6a757c;
+
+    --font: #dee2e6;
+
+    --card-gradient-start: #1e2125;
+    --card-gradient-end: #23282c;
+    --card-shadow-start: #292e33;
+    --card-shadow-end: #191c1f;
+}
