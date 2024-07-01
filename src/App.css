@@ -12,6 +12,10 @@
     --shadow-start-color: #e7e7e7;
     --shadow-end-color: #c7c7c7;
     --header-gradient-color: #d3d3d3;
+    --success-color: #228822;
+    --success-dark-color: #196619;
+    --error-color: #882222;
+    --error-dark-color: #661919;
 }
 
 [data-theme="dark"] {
