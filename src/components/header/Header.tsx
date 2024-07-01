@@ -27,6 +27,13 @@ export default function Header({ title, githubUrl, contactApiKey }: Props) {
         </div>
     )
 
+    const contact = (
+        <Contact
+            setIsContactVisible={setIsContactVisible}
+            apiKey={contactApiKey || ''}
+        />
+    )
+
     return (
         <>
             <header>
@@ -42,7 +49,7 @@ export default function Header({ title, githubUrl, contactApiKey }: Props) {
 
             <div className='header-gradient'></div>
 
-            {isContactVisible && <Contact setIsContactVisible={setIsContactVisible} />}
+            {isContactVisible && contact}
         </>
     )
 }

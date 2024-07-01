@@ -5,7 +5,8 @@ import { useNotifications } from '../../notifications/NotificationContext'
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react'
 
 interface Props {
-    setIsContactVisible: Dispatch<SetStateAction<boolean>>
+    setIsContactVisible: Dispatch<SetStateAction<boolean>>,
+    apiKey: string
 }
 
 interface Response {
@@ -13,7 +14,7 @@ interface Response {
     success: boolean
 }
 
-export default function Contact({ setIsContactVisible }: Props) {
+export default function Contact({ setIsContactVisible, apiKey }: Props) {
     const [formData, setFormData] = useState({
         email: '',
         message: ''
@@ -39,7 +40,7 @@ export default function Contact({ setIsContactVisible }: Props) {
 
         body.append('email', formData.email)
         body.append('message', formData.message)
-        body.append('access_key', 'key')
+        body.append('access_key', apiKey)
 
         submitForm(body)
     }
