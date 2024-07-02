@@ -23,6 +23,7 @@
 }
 
 .video-container:fullscreen video {
+    width: 100%;
     object-fit: contain;
     border-radius: 0;
 }

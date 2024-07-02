@@ -164,8 +164,6 @@ export default function Video({ src, isExpanded }: Props) {
         <span
             ref={containerRef}
             className={`video-container ${isLoaded ? 'fade-in' : 'display-none'}`}
-            onClick={onClick}
-            onDoubleClick={toggleFullscreen}
             onMouseEnter={mouseOver}
             onMouseLeave={mouseOut}
             onMouseMove={mouseOver}
@@ -179,6 +177,8 @@ export default function Video({ src, isExpanded }: Props) {
                 tabIndex={0}
                 preload='auto'
                 playsInline
+                onClick={onClick}
+                onDoubleClick={toggleFullscreen}
             />
 
             {controls}

@@ -62,7 +62,7 @@ export default function Seekbar({ videoRef, isVisible, isPlaying, setIsPlaying }
             seek(event.clientX)
         }
 
-        function onMouseUp()  {
+        function onMouseUp() {
             if (wasPlaying) {
                 setIsPlaying(true)
             }
