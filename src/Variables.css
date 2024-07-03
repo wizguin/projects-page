@@ -20,6 +20,10 @@
     --card-shadow-start: #e7e7e7;
     --card-shadow-end: #c7c7c7;
 
+    --badge: transparent;
+    --badge-border: #212529aa;
+    --badge-font: #212529;
+
     --video-bg: #000;
     --video-btn: #fff;
     --video-btn-shadow: #1e1e1e;
@@ -48,4 +52,7 @@
     --card-gradient-end: #23282c;
     --card-shadow-start: #292e33;
     --card-shadow-end: #191c1f;
+
+    --badge-border: #dee2e6aa;
+    --badge-font: #dee2e6;
 }
