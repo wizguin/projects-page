@@ -19,20 +19,29 @@ export default function Seekbar({ videoRef, isVisible, isPlaying, setIsPlaying }
 
     const seekbarRef = useRef<HTMLDivElement | null>(null)
 
+    // Manual seeking
     const seek = useCallback((clientX: number) => {
-        if (!seekbarRef.current) return
+        if (!videoRef.current || !seekbarRef.current) {
+            return
+        }
 
         const rect = seekbarRef.current.getBoundingClientRect()
         const x = clientX - rect.left
-        const percent = x / rect.width
 
-        if (videoRef.current) {
-            videoRef.current.currentTime = videoRef.current.duration * percent
-        }
+        // Clamp percentage
+        const percent = Math.min(1, Math.max(0, x / rect.width))
+
+        videoRef.current.currentTime = videoRef.current.duration * percent
+
+        setProgress(percent)
     }, [videoRef])
 
-    // Update progress every 20ms
+    // Update progress every 20ms when not seeking
     useEffect(() => {
+        if (!videoRef.current || isSeeking) {
+            return
+        }
+
         function updateProgress() {
             if (videoRef.current) {
                 setProgress(videoRef.current.currentTime / videoRef.current.duration)
@@ -44,7 +53,7 @@ export default function Seekbar({ videoRef, isVisible, isPlaying, setIsPlaying }
         return () => {
             clearInterval(interval)
         }
-    }, [videoRef])
+    }, [videoRef, isSeeking])
 
     // Mouse events
     useEffect(() => {
