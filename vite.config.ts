@@ -12,7 +12,8 @@ export default defineConfig({
             entry: 'src/main.tsx',
             inject: {
                 data: {
-                    title: 'Portfolio'
+                    title: 'Portfolio',
+                    theme: 'dark'
                 }
             }
         })
