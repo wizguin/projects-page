@@ -4,9 +4,7 @@ import Notification from './notification/Notification'
 import { useNotifications } from '../../notifications/NotificationContext'
 
 export default function Notifications() {
-    const { notifications, addSuccess } = useNotifications()
-
-    window.onkeyup = () => addSuccess('test')
+    const { notifications } = useNotifications()
 
     const notificationComponents = notifications.map((notification) => (
         <Notification key={notification.id} {...notification} />
