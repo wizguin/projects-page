@@ -29,6 +29,8 @@ export default function Video({ src, isExpanded }: Props) {
         toggleFullscreen={toggleFullscreen}
     />
 
+    const spinner = <span className='spinner'></span>
+
     // Reload video when src changes
     useEffect(() => {
         setIsPlaying(false)
@@ -161,27 +163,31 @@ export default function Video({ src, isExpanded }: Props) {
     }
 
     return (
-        <span
-            ref={containerRef}
-            className={`video-container ${isLoaded ? 'fade-in' : 'display-none'}`}
-            onMouseEnter={mouseOver}
-            onMouseLeave={mouseOut}
-            onMouseMove={mouseOver}
-            onMouseDown={mouseOver}
-            onMouseUp={mouseOver}
-        >
-            <video
-                ref={videoRef}
-                loop
-                muted
-                tabIndex={0}
-                preload='auto'
-                playsInline
-                onClick={onClick}
-                onDoubleClick={toggleFullscreen}
-            />
+        <>
+            {!isLoaded && spinner}
 
-            {controls}
-        </span>
+            <span
+                ref={containerRef}
+                className={`video-container ${isLoaded ? 'fade-in' : 'display-none'}`}
+                onMouseEnter={mouseOver}
+                onMouseLeave={mouseOut}
+                onMouseMove={mouseOver}
+                onMouseDown={mouseOver}
+                onMouseUp={mouseOver}
+            >
+                <video
+                    ref={videoRef}
+                    loop
+                    muted
+                    tabIndex={0}
+                    preload='auto'
+                    playsInline
+                    onClick={onClick}
+                    onDoubleClick={toggleFullscreen}
+                />
+
+                {controls}
+            </span>
+        </>
     )
 }

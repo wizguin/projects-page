@@ -59,3 +59,21 @@
 .card-media.expanded .thumbnail {
     box-shadow: 0px 0px 50px 0px var(--box-shadow);
 }
+
+.card-media .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.card-media > .spinner {
+    border-width: 5px;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.card-media.expanded > .spinner {
+    width: 5rem;
+    height: 5rem;
+}

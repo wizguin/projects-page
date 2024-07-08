@@ -9,6 +9,8 @@ export default function Image({ src }: Props) {
 
     const imageRef = useRef<HTMLImageElement | null>(null)
 
+    const spinner = <span className='spinner'></span>
+
     useEffect(() => {
         setIsLoaded(false)
 
@@ -26,10 +28,15 @@ export default function Image({ src }: Props) {
     }, [src])
 
     return (
-        <img
-            ref={imageRef}
-            className={isLoaded ? 'fade-in' : 'display-none'}
-            src={src}
-        />
+        <>
+            {!isLoaded && spinner}
+
+            <img
+                ref={imageRef}
+                className={isLoaded ? 'fade-in' : 'display-none'}
+                src={src}
+            />
+        </>
+
     )
 }

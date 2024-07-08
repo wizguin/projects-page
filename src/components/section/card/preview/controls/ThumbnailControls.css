@@ -6,6 +6,7 @@
 }
 
 .thumbnail {
+    position: relative;
     width: 70px;
     height: 60px;
     max-height: 60px;
@@ -17,6 +18,11 @@
 .thumbnail:hover,
 .thumbnail.selected {
     filter: brightness(1);
+}
+
+.thumbnail .spinner {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 @media (min-width: 768px) {

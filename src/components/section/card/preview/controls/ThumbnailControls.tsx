@@ -1,5 +1,6 @@
 import './ThumbnailControls.css'
 
+import Image from '../image/Image'
 import { classNames } from '../../../../../utils/Utils'
 
 import { Dispatch, SetStateAction, MouseEvent } from 'react'
@@ -20,13 +21,16 @@ export default function ThumbnailControls({ media, mediaIndex, setMediaIndex }: 
             setMediaIndex(index)
         }
 
-        return <img
-            key={index}
-            className={classNames('thumbnail', index === mediaIndex && 'selected')}
-            src={src}
-            role='button'
-            onClick={onClick}
-        />
+        return (
+            <div
+                key={index}
+                className={classNames('thumbnail', index === mediaIndex && 'selected')}
+                role='button'
+                onClick={onClick}
+            >
+                <Image src={src} />
+            </div>
+        )
     })
 
     return (
