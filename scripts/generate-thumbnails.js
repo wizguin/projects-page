@@ -3,8 +3,8 @@ import { join, parse } from 'path'
 import { spawn } from 'child_process'
 import { rimraf } from 'rimraf'
 
-const previews = join('public/assets/previews')
-const thumbnails = join('public/assets/thumbnails')
+const previews = join('public/previews')
+const thumbnails = join('public/thumbnails')
 
 const files = readdirSync(previews)
 

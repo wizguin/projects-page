@@ -12,7 +12,7 @@ interface Props {
 
 export default function ThumbnailControls({ media, mediaIndex, setMediaIndex }: Props) {
     const thumbnails = media.map((fileName, index) => {
-        const src = `assets/thumbnails/${fileName.split('.')[0]}.jpg`
+        const src = `/thumbnails/${fileName.split('.')[0]}.jpg`
 
         const onClick = (event: MouseEvent) => {
             event.stopPropagation()

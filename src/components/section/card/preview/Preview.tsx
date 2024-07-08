@@ -22,7 +22,7 @@ export default function Preview({ media }: Props) {
     const fileName = media[mediaIndex]
 
     const type = getType(fileName)
-    const src = `assets/previews/${fileName}`
+    const src = `/previews/${fileName}`
 
     let preview
 
