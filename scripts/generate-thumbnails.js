@@ -1,9 +1,10 @@
-import { readdirSync } from 'fs'
+import { mkdirSync, readdirSync } from 'fs'
 import { join, parse } from 'path'
 import { spawn } from 'child_process'
+import { rimraf } from 'rimraf'
 
-const previews = join('assets/previews')
-const thumbnails = join('assets/thumbnails')
+const previews = join('public/assets/previews')
+const thumbnails = join('public/assets/thumbnails')
 
 const files = readdirSync(previews)
 
@@ -11,11 +12,22 @@ const width = 90
 const height = 80
 const filter = `scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height}`
 
+// Clear directory
+rimraf.sync(thumbnails)
+mkdirSync(thumbnails)
+
 files.forEach(file => {
     const inputFile = join(previews, file)
     const outputFile = join(thumbnails, `${parse(file).name}.jpg`)
 
-    const child = spawn('ffmpeg', ['-y', '-i', inputFile, '-vframes', '1', '-vf', filter, outputFile])
+    const child = spawn('ffmpeg', [
+        '-y',
+        '-i', inputFile,
+        '-vframes', '1',
+        '-vf', filter,
+        '-loglevel', 'error',
+        outputFile
+    ])
 
     child.on('error', error => {
         console.log(`Error: ${error}`)
@@ -30,6 +42,6 @@ files.forEach(file => {
     })
 
     child.on('close', code => {
-        console.log(code)
+        console.log(`${file} closed with code ${code}`)
     })
 })
