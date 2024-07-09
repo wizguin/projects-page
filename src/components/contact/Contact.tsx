@@ -2,7 +2,7 @@ import './Contact.css'
 
 import { useNotifications } from '../../notifications/NotificationContext'
 
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react'
 
 interface Props {
     setIsContactVisible: Dispatch<SetStateAction<boolean>>,
@@ -23,6 +23,23 @@ export default function Contact({ setIsContactVisible, apiKey }: Props) {
     const [isLoading, setIsLoading] = useState(false)
 
     const { addSuccess, addError } = useNotifications()
+
+    // Keyboard shortcuts
+    useEffect(() => {
+        function onKeyDown(event: KeyboardEvent) {
+            switch (event.key) {
+                case 'Escape':
+                    setIsContactVisible(false)
+                    break
+            }
+        }
+
+        window.addEventListener('keydown', onKeyDown)
+
+        return () => {
+            window.removeEventListener('keydown', onKeyDown)
+        }
+    }, [])
 
     function onChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setFormData(prev => ({
