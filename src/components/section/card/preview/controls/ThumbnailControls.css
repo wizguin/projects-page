@@ -16,6 +16,11 @@
     border-radius: 1rem;
 }
 
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+
 .thumbnail:hover,
 .thumbnail.selected {
     filter: brightness(1);
