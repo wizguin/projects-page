@@ -17,7 +17,7 @@ export default function Video({ src, isExpanded }: Props) {
 
     const containerRef = useRef<HTMLElement | null>(null)
     const videoRef = useRef<HTMLVideoElement | null>(null)
-    const timeoutRef = useRef<number | null>(null)
+    const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const controls = <VideoControls
         videoRef={videoRef}
@@ -109,7 +109,6 @@ export default function Video({ src, isExpanded }: Props) {
         return () => {
             current.removeEventListener('keydown', onKeyDown)
         }
-
     }, [])
 
     // Set container aspect ratio to match video
