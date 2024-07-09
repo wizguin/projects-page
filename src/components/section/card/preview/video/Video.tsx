@@ -184,6 +184,7 @@ export default function Video({ src, isExpanded }: Props) {
                     playsInline
                     onClick={onClick}
                     onDoubleClick={toggleFullscreen}
+                    draggable={false}
                 />
 
                 {controls}

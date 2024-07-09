@@ -35,6 +35,7 @@ export default function Image({ src }: Props) {
                 ref={imageRef}
                 className={isLoaded ? 'fade-in' : 'display-none'}
                 src={src}
+                draggable={false}
             />
         </>
 
