@@ -69,11 +69,15 @@
 
 .card-media > .spinner {
     border-width: 5px;
+    border-color: var(--spinner-card);
+    border-bottom-color: transparent;
     width: 3.5rem;
     height: 3.5rem;
 }
 
 .card-media.expanded > .spinner {
+    border-color: var(--spinner);
+    border-bottom-color: transparent;
     width: 5rem;
     height: 5rem;
 }

@@ -39,6 +39,9 @@
     --error-dark: #661919;
     --success: #228822;
     --success-dark: #196619;
+
+    --spinner: #fff;
+    --spinner-card: #212529;
 }
 
 [data-theme="dark"] {
@@ -55,4 +58,6 @@
 
     --badge-border: #dee2e6aa;
     --badge-font: #dee2e6;
+
+    --spinner-card: #fff;
 }
