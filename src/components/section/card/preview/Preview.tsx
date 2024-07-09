@@ -65,9 +65,19 @@ export default function Preview({ media }: Props) {
         }
 
         function onKeyDown(event: KeyboardEvent) {
+            event.preventDefault()
+
             switch (event.key) {
                 case 'Escape':
                     setExpanded(false)
+                    break
+
+                case 'ArrowLeft':
+                    setMediaIndex(prev => (prev - 1 + media.length) % media.length)
+                    break
+
+                case 'ArrowRight':
+                    setMediaIndex(prev => (prev + 1) % media.length)
                     break
             }
         }
@@ -77,7 +87,6 @@ export default function Preview({ media }: Props) {
         return () => {
             window.removeEventListener('keydown', onKeyDown)
         }
-
     }, [isExpanded])
 
     function onMouseEnter() {
