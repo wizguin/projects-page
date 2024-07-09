@@ -4,17 +4,15 @@ import Contact from '../contact/Contact'
 
 import { useState } from 'react'
 
-export interface Props {
-    title: string,
-    githubUrl?: string,
-    contactApiKey?: string
-}
+const TITLE: string = import.meta.env.VITE_TITLE
+const GITHUB_URL: string = import.meta.env.VITE_GITHUB_URL
+const CONTACT_API_KEY: string = import.meta.env.VITE_CONTACT_API_KEY
 
-export default function Header({ title, githubUrl, contactApiKey }: Props) {
+export default function Header() {
     const [isContactVisible, setIsContactVisible] = useState(false)
 
     const githubButton = (
-        <a className='header-link' href={githubUrl || ''} target='_blank'>
+        <a className='header-link' href={GITHUB_URL} target='_blank'>
             <i className='fa-brands fa-github'></i>
             <span className='tooltip fade'>GitHub</span>
         </a>
@@ -30,7 +28,6 @@ export default function Header({ title, githubUrl, contactApiKey }: Props) {
     const contact = (
         <Contact
             setIsContactVisible={setIsContactVisible}
-            apiKey={contactApiKey || ''}
         />
     )
 
@@ -38,11 +35,11 @@ export default function Header({ title, githubUrl, contactApiKey }: Props) {
         <>
             <header>
                 <div className='header-title'>
-                    <h1>{title}</h1>
+                    <h1>{TITLE}</h1>
 
                     <div className='header-links'>
-                        {githubUrl && githubButton}
-                        {contactApiKey && contactButton}
+                        {GITHUB_URL && githubButton}
+                        {CONTACT_API_KEY && contactButton}
                     </div>
                 </div>
             </header>

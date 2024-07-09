@@ -1,17 +1,10 @@
-import { Props as HeaderProps } from './components/header/Header'
 import { Props as SectionProps } from './components/section/Section'
 
 interface Data {
-    header: HeaderProps,
     sections: SectionProps[]
 }
 
 const data: Data = {
-    header: {
-        title: 'Title',
-        githubUrl: 'github',
-        contactApiKey: 'key'
-    },
     sections: [
         {
             title: 'Projects',

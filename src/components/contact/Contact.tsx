@@ -4,9 +4,10 @@ import { useNotifications } from '../../notifications/NotificationContext'
 
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react'
 
+const CONTACT_API_KEY: string = import.meta.env.VITE_CONTACT_API_KEY
+
 interface Props {
-    setIsContactVisible: Dispatch<SetStateAction<boolean>>,
-    apiKey: string
+    setIsContactVisible: Dispatch<SetStateAction<boolean>>
 }
 
 interface Response {
@@ -14,7 +15,7 @@ interface Response {
     success: boolean
 }
 
-export default function Contact({ setIsContactVisible, apiKey }: Props) {
+export default function Contact({ setIsContactVisible }: Props) {
     const [formData, setFormData] = useState({
         email: '',
         message: ''
@@ -57,7 +58,7 @@ export default function Contact({ setIsContactVisible, apiKey }: Props) {
 
         body.append('email', formData.email)
         body.append('message', formData.message)
-        body.append('access_key', apiKey)
+        body.append('access_key', CONTACT_API_KEY)
 
         submitForm(body)
     }

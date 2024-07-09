@@ -14,9 +14,7 @@ function App() {
     return (
         <>
             <Notifications />
-
-            <Header {...data.header} />
-
+            <Header />
             {sections}
         </>
     )
