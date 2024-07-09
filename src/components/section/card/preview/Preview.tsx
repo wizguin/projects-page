@@ -65,18 +65,18 @@ export default function Preview({ media }: Props) {
         }
 
         function onKeyDown(event: KeyboardEvent) {
-            event.preventDefault()
-
             switch (event.key) {
                 case 'Escape':
                     setExpanded(false)
                     break
 
                 case 'ArrowLeft':
+                    event.preventDefault()
                     setMediaIndex(prev => (prev - 1 + media.length) % media.length)
                     break
 
                 case 'ArrowRight':
+                    event.preventDefault()
                     setMediaIndex(prev => (prev + 1) % media.length)
                     break
             }
