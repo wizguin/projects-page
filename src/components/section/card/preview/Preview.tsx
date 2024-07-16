@@ -28,11 +28,11 @@ export default function Preview({ media }: Props) {
 
     switch (type) {
         case PreviewTypes.Image:
-            preview = <Image src={src} />
+            preview = <Image key={src} src={src} />
             break
 
         case PreviewTypes.Video:
-            preview = <Video src={src} isExpanded={isExpanded} />
+            preview = <Video key={src} src={src} isExpanded={isExpanded} />
             break
     }
 
